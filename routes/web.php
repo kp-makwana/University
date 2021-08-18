@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
-Route::get('users',function (){
-   return view('pages.users');
-});
+
+Route::get('/',function (){
+   return view('index');
+})->name('index');
+Route::get('userList',function (){
+   return view('pages.userList');
+})->name('userList');
+Route::get('profile',function (){
+   return view('pages.profile');
+})->name('profile');
+
+
+Route::get('/students',[StudentController::class,'index'])->name('students');
+Route::get('/add_student',[StudentController::class,'student_form'])->name('student_form');
+Route::post('/add_student',[StudentController::class,'add_student'])->name('add_student');

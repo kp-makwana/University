@@ -9,7 +9,8 @@ class CertificateController extends Controller
 {
     public function index()
     {
-        return view('pages/certificateList');
+        $certificates = Certificate::all();
+        return view('pages/certificateList')->with(['certificates'=>$certificates]);
     }
 
     public function certificate_form()

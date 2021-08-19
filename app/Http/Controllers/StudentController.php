@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTables\StudentsDataTable;
 use App\Models\Student;
 use Illuminate\Http\Request;
+
 
 class StudentController extends Controller
 {
     public function index(Request $request)
     {
-//        if ($request->ajax()) {
-//            $data = Student::select('*');
-//            return Datatables::of($data);
-//        }
-
-        return view('pages/studentList');
+        $students = Student::all();
+        return view('pages.studentList')->with(['students'=>$students]);
     }
 
     public function student_form()

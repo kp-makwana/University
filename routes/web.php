@@ -25,6 +25,9 @@ Route::get('userList', function () {
 Route::get('profile', function () {
     return view('pages.profile');
 })->name('profile');
+Route::get('profile', function () {
+    return view('pages.profile');
+})->name('profile');
 
 
 Route::get('/students', [StudentController::class, 'index'])->name('students');

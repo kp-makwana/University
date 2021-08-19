@@ -16,7 +16,7 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->date('name');
+            $table->string('name');
             $table->date('issue_date');
             $table->string('stream_class');
             $table->string('language');

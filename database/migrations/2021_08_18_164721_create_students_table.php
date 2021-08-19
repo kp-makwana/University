@@ -21,7 +21,6 @@ class CreateStudentsTable extends Migration
             $table->string('last_name');
             $table->date('date_of_birth');
             $table->enum('gender',['female'=>0,'male'=>1]);
-            $table->string('email')->unique();
             $table->string('phone')->unique();
             $table->text('address');
             $table->timestamps();

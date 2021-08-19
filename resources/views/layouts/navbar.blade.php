@@ -280,14 +280,6 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('profile') }}" class="nav-link">
-                            <i class="nav-icon fas fa-user-alt"></i>
-                            <p>
-                                Profile
-                            </p>
-                        </a>
-                    </li>
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
@@ -310,6 +302,22 @@
                                 </a>
                             </li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('profile') }}" class="nav-link">
+                            <i class="nav-icon fas fa-user-alt"></i>
+                            <p>
+                                Profile
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('logout') }}" class="nav-link">
+                            <i class="nav-icon fas fa-power-off"></i>
+                            <p class="text-danger">
+                                Logout
+                            </p>
+                        </a>
                     </li>
                 </ul>
             </nav>

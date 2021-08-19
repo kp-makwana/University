@@ -20,7 +20,6 @@ class CreateSchoolsTable extends Migration
             $table->integer('code');
             $table->string('contact');
             $table->text('address');
-            $table->string('email');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -18,28 +18,29 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
-Route::get('userList', function () {
-    return view('pages.collage.userList');
-})->name('userList');
-Route::get('profile', function () {
-    return view('pages.collage.profile');
-})->name('profile');
-Route::get('profile', function () {
-    return view('pages.collage.profile');
-})->name('profile');
-
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
-
+Route::get('/login', [CollageController::class, 'login'])->name('index');
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
-Route::get('/collage', [CollageController::class, 'login'])->name('collage');
-Route::get('/students', [CollageController::class, 'index'])->name('students');
-Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
-Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');
+Route::middleware('auth')->group(function () {
 
-Route::get('/certificate', [CertificateController::class, 'index'])->name('certificates');
-Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
-Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
+    Route::get('/index', function () {
+        return view('pages.collage.index');
+    })->name('index');
+
+    Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
+    Route::get('/students', [CollageController::class, 'index'])->name('students');
+    Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
+    Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');
+
+    Route::get('/certificate', [CertificateController::class, 'index'])->name('certificates');
+    Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
+    Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
+
+    Route::get('profile', function () {
+        return view('pages.collage.profile');
+    })->name('profile');
+
+    Route::get('/profile', function () {
+        return view('pages.collage.profile');
+    })->name('profile');
+});

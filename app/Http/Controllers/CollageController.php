@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class CollageController extends Controller
@@ -15,8 +16,8 @@ class CollageController extends Controller
     }
     public function index(Request $request)
     {
-        $students = Student::all();
-        return view('pages.collage.studentList')->with(['students'=>$students]);
+        $students = Student::with('user')->get();
+        return view('pages.collage.studentList',['students'=>$students]);
     }
 
     public function student_form()
@@ -26,6 +27,7 @@ class CollageController extends Controller
 
     public function add_student(Request $request): \Illuminate\Http\RedirectResponse
     {
+//        dd('here',$request->all());
         #param
         $first_name = $request->input('first_name');
         $mid_name = $request->input('mid_name');
@@ -41,6 +43,7 @@ class CollageController extends Controller
         $user = new User;
         $user->email = $email;
         $user->password = Hash::make($password);
+        $user->type = "0";
         $user->save();
 
         #add student
@@ -51,11 +54,15 @@ class CollageController extends Controller
         $student->last_name = $last_name;
         $student->date_of_birth = $dob;
         $student->gender = $gender;
-        $student->email = $email;
         $student->phone = $phone;
         $student->address = $address;
         $student->save();
 
         return redirect()->route('students');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('index');
     }
 }

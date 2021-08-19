@@ -11,18 +11,17 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $result = User::where('email', $request->input('username'))->exists();
+        $result = User::where('email', $request->input('email'))->exists();
         if ($result) {
             if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
                 if (Auth()->user()->type === "collage") {
-                    return redirect()->route('students');
+                    return redirect()->route('index');
                 }
-                return redirect()->route('user.profile.index');
+                    return redirect()->route('index');
             }
-            return redirect()->route('collage')->with(['type' => 'error', 'message' => 'Invalid password']);
-
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid password']);
         }
-        return redirect()->route('collage')->with(['type' => 'error', 'message' => 'Invalid Username or password']);
+        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Username or password']);
 
     }
 }

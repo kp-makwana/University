@@ -3,6 +3,7 @@
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CollageController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,8 +33,9 @@ Route::get('/index', function () {
     return view('index');
 })->name('index');
 
-Route::get('/collage', [CollageController::class, 'login'])->name('collage');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
 
+Route::get('/collage', [CollageController::class, 'login'])->name('collage');
 Route::get('/students', [CollageController::class, 'index'])->name('students');
 Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
 Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');

@@ -7,8 +7,13 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+//        if ($request->ajax()) {
+//            $data = Student::select('*');
+//            return Datatables::of($data);
+//        }
+
         return view('pages/studentList');
     }
 
@@ -25,7 +30,6 @@ class StudentController extends Controller
         $last_name = $request->input('last_name');
         $dob = $request->input('dob');
         $gender = $request->input('gender');
-//        $stream = $request->input('stream');
         $email = $request->input('email');
         $phone = $request->input('phone');
         $address = $request->input('address');
@@ -35,7 +39,7 @@ class StudentController extends Controller
         $student->first_name = $first_name;
         $student->mid_name = $mid_name ?? '';
         $student->last_name = $last_name;
-        $student->date_of_birth	 = $dob;
+        $student->date_of_birth = $dob;
         $student->gender = $gender;
         $student->email = $email;
         $student->phone = $phone;

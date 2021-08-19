@@ -16,7 +16,7 @@ class CreateCertificatesTable extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('student_id');
-            $table->date('name');
+            $table->string('name');
             $table->date('issue_date');
             $table->string('stream_class');
             $table->string('language');
@@ -24,6 +24,7 @@ class CreateCertificatesTable extends Migration
             $table->string('obtain_class');
             $table->enum('status',['claimed'=>1,'unclaimed'=>0]);
             $table->timestamps();
+
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
     }

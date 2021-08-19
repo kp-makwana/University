@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CollageController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,20 +18,27 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', function () {
-    return view('index');
-})->name('index');
+
 Route::get('userList', function () {
-    return view('pages.userList');
+    return view('pages.collage.userList');
 })->name('userList');
 Route::get('profile', function () {
-    return view('pages.profile');
+    return view('pages.collage.profile');
+})->name('profile');
+Route::get('profile', function () {
+    return view('pages.collage.profile');
 })->name('profile');
 
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
 
-Route::get('/students', [StudentController::class, 'index'])->name('students');
-Route::get('/add_student', [StudentController::class, 'student_form'])->name('student_form');
-Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+
+Route::get('/collage', [CollageController::class, 'login'])->name('collage');
+Route::get('/students', [CollageController::class, 'index'])->name('students');
+Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
+Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');
 
 Route::get('/certificate', [CertificateController::class, 'index'])->name('certificates');
 Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');

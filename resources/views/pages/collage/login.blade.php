@@ -6,7 +6,8 @@
     <title>AdminLTE 3 | Log in</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&amp;display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- icheck bootstrap -->
@@ -27,13 +28,12 @@
             <form action="../../index3.html" method="post">
                 <div class="input-group mb-3">
                     <!-- select -->
-                        <select class="form-control">
-                            <option selected>Select Collage</option>
-                            <option>option 2</option>
-                            <option>option 3</option>
-                            <option>option 4</option>
-                            <option>option 5</option>
-                        </select>
+                    <select class="form-control">
+                        <option selected disabled>Select Collage</option>
+                        @foreach(App\Models\Collage::all() as $collage)
+                            <option>{{ $collage->name }}</option>
+                        @endforeach
+                    </select>
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fc-timegrid-axis-frame-liquid"></span>

@@ -49,13 +49,13 @@
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="input-group mb-3">
-                    <input type="password" name="password" id="exampleInputPassword1" class="form-control" placeholder="Password">
+                    <input type="password" name="password" id="exampleInputPassword1" class="form-control"
+                           placeholder="Password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>

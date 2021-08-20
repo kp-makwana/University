@@ -1,6 +1,6 @@
 @extends('pages.collage.navbar')
 @section('content')
-
+s
     <div class="container-fluid">
         <div class="content-wrapper">
             <div class="row">

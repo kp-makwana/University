@@ -3,42 +3,12 @@
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-6">
                 @php use Illuminate\Support\Facades\Auth;$user = Auth::user() @endphp
                 <!-- Profile Image -->
                     <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-                            <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle"
-                                     src="{{ asset('img/logo.png') }}" alt="User profile picture">
-                            </div>
-
-                            <ul class="list-group list-group-unbordered mb-3">
-                                <li class="list-group-item">
-                                    <b>Principal name</b> <a class="float-right">KP Makwana</a>
-                                </li>
-
-                                <li class="list-group-item">
-                                    <b>Total staff</b> <a class="float-right">15</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Students</b> <a class="float-right">{{ \App\Models\Student::count() }}</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <b>Collage Code</b> <a class="float-right">{{ $user->collage->code }}</a>
-                                </li>
-                            </ul>
-
-                            {{--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>--}}
-                        </div>
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-
-                    <!-- About Me Box -->
-                    <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">About Me</h3>
+                            <h3 class="card-title">About univercity</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -75,58 +45,44 @@
                         </div>
                         <!-- /.card-body -->
                     </div>
-                    <!-- /.card -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">School?Collage/Departments</h3>
+                        </div>
+                        <div class="card-body box-profile">
+                            <ol>
+                                <li>BCA</li>
+                                <li>MCA</li>
+                                <li>engineering</li>
+                                <li>MscIT</li>
+                                <li>BBA</li>
+                            </ol>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
                 </div>
                 <!-- /.col -->
-                <div class="col-md-9">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="tab-content">
-                                <div class="active tab-pane" id="activity">
-                                    <!-- Post -->
-                                    <div class="post">
-                                        <div class="user-block">
-                                            {{--                                            <img class="img-circle img-bordered-sm" src="" alt="user image">--}}
-                                            <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                        </span>
-                                            <span class="description">Shared publicly - 7:30 PM today</span>
-                                        </div>
-                                        <!-- /.user-block -->
-                                        <p>
-                                            Lorem ipsum represents a long-held tradition for designers,
-                                            typographers and the like. Some people hate it and argue for
-                                            its demise, but others ignore the hate as they create awesome
-                                            tools to help create filler text for everyone from bacon lovers
-                                            to Charlie Sheen fans.
-                                        </p>
 
-                                        <p>
-                                            <a href="#" class="link-black text-sm mr-2"><i
-                                                    class="fas fa-share mr-1"></i> Share</a>
-                                            <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i>
-                                                Like</a>
-                                            <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
-                                        </p>
+                <div class="col-md-6">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">About univercity</h3>
+                        </div>
+                        <div class="card-body box-profile">
+                            <p> Wikis are enabled by wiki software, otherwise known as wiki engines. A wiki engine, being a form of a content management system, differs from other web-based systems such as blog software, in that the content is created without any defined owner or leader, and wikis have little inherent structure, allowing structure to emerge according to the needs of the users.[1] Wiki engines usually allow content to be written using a simplified markup language and sometimes edited with the help of a rich-text editor.[2] There are dozens of different wiki engines in use, both standalone and part of other software, such as bug tracking systems. Some wiki engines are open source, whereas others are proprietary. Some permit control over different functions (levels of access); for example, editing rights may permit changing, adding, or removing material. Others may permit access without enforcing access control. Other rules may be imposed to organize content.</p>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
 
-                                        <input class="form-control form-control-sm" type="text"
-                                               placeholder="Type a comment">
-                                    </div>
-                                    <!-- /.post -->
-
-
-                                </div>
-                                <!-- /.tab-pane -->
-
-                                <!-- /.tab-pane -->
-                            </div>
-                            <!-- /.tab-content -->
-                        </div><!-- /.card-body -->
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Contact & Information</h3>
+                        </div>
+                        <div class="card-body box-profile">
+                            <p> Wikis are enabled by wiki software, otherwise known as wiki engines. A wiki engine, being a form of a content management system, differs from other web-based systems such as blog software, in that the content is created without any defined owner or leader, and wikis have little inherent structure, allowing structure to emerge according to the needs of the users.[1] Wiki engines usually allow content to be written using a simplified markup language and sometimes edited with the help of a rich-text editor.[2] There are dozens of different wiki engines in use, both standalone and part of other software, such as bug tracking systems. Some wiki engines are open source, whereas others are proprietary. Some permit control over different functions (levels of access); for example, editing rights may permit changing, adding, or removing material. Others may permit access without enforcing access control. Other rules may be imposed to organize content.</p>
+                            <p>The online encyclopedia project, Wikipedia, is the most popular wiki-based website, and is one of the most widely viewed sites in the world, having been ranked in the top twenty since 2007.[3] Wikipedia is not a single wiki but rather a collection of hundreds of wikis, with each one pertaining to a specific language. In addition to Wikipedia, there are hundreds of thousands of other wikis in use, both public and private, including wikis functioning as knowledge management resources, notetaking tools, community websites, and intranets. The English-language Wikipedia has the largest collection of articles: as of February 2020, it has over 6 million articles. Ward Cunningham, the developer of the first wiki software, WikiWikiWeb, originally described wiki as "the simplest online database that could possibly work."[4] "Wiki" (pronounced [wiki][note 1]) is a Hawaiian word meaning "quick.</p>
+                        </div>
+                        <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
                 </div>
@@ -136,3 +92,17 @@
         </div><!-- /.container-fluid -->
     </section>
 @endsection
+@push('styles')
+    <style>
+        ol{
+            padding: 20px;
+            list-style-type:decimal;
+
+        }
+        /*ol li {*/
+        /*    float:left;*/
+        /*    margin: 0 10px;*/
+        /*    padding: 0 10px;*/
+        /*}*/
+    </style>
+@endpush

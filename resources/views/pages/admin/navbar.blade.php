@@ -227,13 +227,61 @@
                         <a href="{{ route('index') }}" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Dashborad
+                                DashBoard
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item menu-open">
-                        <a href="" class="nav-link">
+                    <li class="nav-item">
+                        <a href="" class="nav-link ">
                             <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Schools/Collages/University
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List Of Schools</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add School</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List Of Collages</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Collage</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List Of University</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add University</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-hands-helping"></i>
+
                             <p>
                                 Students
                                 <i class="right fas fa-angle-left"></i>
@@ -243,18 +291,18 @@
                             <li class="nav-item">
                                 <a href="{{ route('studentList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Student List</p>
+                                    <p>List Of Students</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('student_form') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Student Form</p>
+                                    <p>Add Students</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
@@ -277,7 +325,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-hands-helping"></i>
 

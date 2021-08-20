@@ -14,7 +14,7 @@
                                 <thead>
                                 <tr>
                                     <th>Student Name</th>
-                                    <th>Stream</th>
+                                    <th>Class</th>
                                     <th>Date Of Birth</th>
                                     <th>Email</th>
                                     <th>Phone</th>

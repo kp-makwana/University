@@ -71,6 +71,6 @@ class CollageController extends Controller
 
     public function profile()
     {
-        return view('profile', ['user' => Auth::user()]);
+        return view('pages.collage.profile', ['user' => Auth::user()]);
     }
 }

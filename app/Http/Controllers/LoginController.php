@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collage;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,19 +16,24 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $collage = Collage::with('user')->where('id', $request->input('collage'))->firstOrFail();
-        if ($collage->user->email === $request->input('email')) {
-            $result = User::where('email', $request->input('email'))->exists();
-            if ($result) {
+        if ($collage) {
+            if ($collage->user->email === $request->input('email')) {
                 if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
-                    if (Auth()->user()->type === 0) {
-                        return redirect()->route('index');
-                    }
                     return redirect()->route('index');
+                } else {
+                    return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Password']);
                 }
-                return redirect()->back()->with(['type' => 'Password', 'message' => 'Invalid password']);
             }
         }
-        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Username or password']);
+        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+    }
 
+    public function adminLogin(Request $request)
+    {
+        if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+            return redirect()->route('admin.index');
+        } else {
+            return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+        }
     }
 }

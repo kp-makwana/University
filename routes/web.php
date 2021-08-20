@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CollageController;
 use App\Http\Controllers\LoginController;
@@ -17,11 +18,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('no-auth')->group(function () {
+
+    #login
     Route::get('/', function () {
         return view('pages.collage.login');
     });
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('DoLogin');
+
+    #Admin Login
+    Route::get('/admin', [AdminController::class, 'loginPage'])->name('adminLogin');
+    Route::post('/adminLogin', [LoginController::class, 'adminLogin'])->name('adminLogin');
 });
 
 Route::middleware('auth')->group(function () {
@@ -38,7 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
 
     Route::prefix('admin')->as('admin.')->group(function () {
-        Route::get('/index', [CollageController::class, 'index'])->name('index');
+        Route::get('/index', [AdminController::class, 'index'])->name('index');
     });
 });
 

@@ -25,23 +25,14 @@
 <body class="login-page" style="min-height: 496.391px;">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>University/Collage</b>Login</a>
+        <a href="#"><b>Admin</b>Login</a>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in </p>
 
-            <form id="quickForm" action="{{ route('DoLogin') }}" method="post">
+            <form id="quickForm" action="{{ route('adminLogin') }}" method="post">
                 @csrf
-                <div class="form-group">
-                    <!-- select -->
-                    <select class="form-control" name="collage" id="collage">
-                        <option selected disabled>Select Collage</option>
-                        @foreach(App\Models\Collage::all() as $collage)
-                            <option value="{{$collage->id}}">{{ $collage->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">

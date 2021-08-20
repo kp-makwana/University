@@ -14,13 +14,16 @@ class CollageSeeder extends Seeder
      */
     public function run()
     {
-        Collage::insert([
-            'name' => 'MKBU',
-            'user_id'=>1,
-            'university_id'=>1,
-            'code'=>'001',
-            'contact'=>'1234567890',
-            'address'=>'Bhavnagar',
-        ]);
+
+        for ($i = 1; $i < 20; $i++) {
+            Collage::insert([
+                'name' => 'MKBU',
+                'user_id' => 1,
+                'university_id' => 1,
+                'code' => $i,
+                'contact' => '1234sds56'.$i,
+                'address' => 'Bhavnagar',
+            ]);
+        }
     }
 }

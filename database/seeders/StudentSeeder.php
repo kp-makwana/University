@@ -14,15 +14,18 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        Student::insert([
-            'user_id'=>1,
-            'first_name' => 'First',
-            'mid_name'=>'mid',
-            'last_name'=>'last_name',
-            'date_of_birth'=>now(),
-            'gender'=>1,
-            'phone'=>'123465798',
-            'address'=>'Bhavnagar',
-        ]);
+        for ($i = 0; $i < 20; $i++) {
+            Student::insert([
+                'user_id' => 3,
+                'first_name' => 'First',
+                'mid_name' => 'mid',
+                'last_name' => 'last_name',
+                'stream' => 'BCA',
+                'date_of_birth' => now(),
+                'gender' => 1,
+                'phone' => '1234657'.$i,
+                'address' => 'Bhavnagar',
+            ]);
+        }
     }
 }

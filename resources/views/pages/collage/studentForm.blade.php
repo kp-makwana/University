@@ -7,7 +7,7 @@
                 <h3 class="card-title">Student Enrollment Form</h3>
 
             </div>
-            <form action="{{ route('add_student') }}" method="POST">
+            <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
             @csrf
             <!-- /.card-header -->
             <div class="card-body">
@@ -21,7 +21,7 @@
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="mid_name"
-                                       placeholder="Student Middle Name *"/>
+                                       placeholder="Student Middle Name"/>
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" name="last_name"
@@ -53,30 +53,28 @@
                         <div class="form-group">
                             <label>Streaming</label>
                             <select name="stream" class="form-control">
-                                <option class="hidden" selected disabled>select</option>
+                                <option class="hidden" selected disabled>Select Stream</option>
                                 @foreach(App\Models\Student::STREAMING as $key=>$value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-sm-6">
                             <label>Date Of Birth</label>
-                            <div class="form-group">
-                                <input type="date" name="dob" class="form-control col-4"
+{{--                            <div class="form-group">--}}
+                                <input type="date" name="dob" class="form-control"
                                        placeholder="Student Last Name *"/>
-                            </div>
+{{--                            </div>--}}
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-sm-6">
                             <label>Gender</label>
                             <div class="maxl">
-                                <label class="radio inline">
-                                    <input type="radio" name="gender" value="1" checked>
-                                    <span> Male </span>
-                                </label>
-                                <label class="radio inline">
-                                    <input type="radio" name="gender" value="0">
-                                    <span>Female </span>
-                                </label>
+                                <select name="gender" class="form-control" id="gender">
+                                    <option class="hidden" selected disabled>Select Gender</option>
+                                    @foreach(config('constants.GENDER') as $key=>$value)
+                                        <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -99,3 +97,113 @@
     <!-- /.container-fluid -->
     </div>
 @endsection
+
+@push('styles')
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('assets/dist/css/adminlte.min.css') }}">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+@endpush
+@push('scripts')
+
+    <!-- jQuery -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- AdminLTE App -->
+    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    {{--<script src="{{ asset('assets/jquery-validation/additional-methods.min.js') }}"></script>--}}
+
+
+    <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    <!-- Bootstrap 4 -->
+    <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
+    <script>
+        $(function () {
+            $('#add_student').validate({
+                rules: {
+                    first_name: {
+                        required: true,
+                    },
+                    last_name: {
+                        required: true,
+                    },
+                    email: {
+                        required: true,
+                        email:true
+                    },
+                    phone: {
+                        required: true,
+                        min:10
+                    },
+                    address: {
+                        required: true,
+                        // min:5
+                    },
+                    stream: {
+                        required: true,
+                    },
+                    dob: {
+                        required: true,
+                    },
+                    gender: {
+                        required: true,
+                    }
+                },
+                messages: {
+                    first_name: {
+                        required: "Last Name Must Be Required.",
+                        min:"Minimum 3 Character."
+                    },
+                    last_name: {
+                        required: "First Name Must Be Required.",
+                        min:"Minimum 3 Character."
+                    },
+                    email: {
+                        required: "Email Must Be Required.",
+                        email:"Email Not Proper Format."
+                    },
+                    phone: {
+                        required: "Phone Number Must Be Required.",
+                    },
+                    address: {
+                        required: "Address Must Be Required.",
+                        min:"Address Must Be in 5 Character"
+                    },
+                    stream: {
+                        required: "Please Select Stream.",
+                    },
+                    dob: {
+                        required: "Birth Date Must Be Required",
+                    },
+                    gender: {
+                        required: "Select The Gender",
+                    }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element, errorClass, validClass) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).removeClass('is-invalid');
+                }
+            });
+        });
+    </script>
+@endpush

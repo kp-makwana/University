@@ -17,51 +17,41 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="{{ asset('assets/plugins/toastr/toastr.min.css') }}">
 </head>
 <body class="login-page" style="min-height: 496.391px;">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href="#"><b>University/Collage</b>Login</a>
     </div>
-    <!-- /.login-logo -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Sign in </p>
 
-            <form id="quickForm" action="{{ route('login') }}" method="post">
+            <form id="quickForm" action="{{ route('DoLogin') }}" method="post">
                 @csrf
-                <div class="input-group mb-3">
+                <div class="form-group">
                     <!-- select -->
-                    <select class="form-control" name="collage">
+                    <select class="form-control" name="collage" id="collage">
                         <option selected disabled>Select Collage</option>
                         @foreach(App\Models\Collage::all() as $collage)
                             <option value="{{$collage->id}}">{{ $collage->name }}</option>
                         @endforeach
                     </select>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fc-timegrid-axis-frame-liquid"></span>
-                        </div>
-                    </div>
                 </div>
-
-                <div class="input-group mb-3">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
                     <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                        </div>
-                    </div>
                 </div>
-
-                <div class="input-group mb-3">
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" id="exampleInputPassword1" class="form-control"
                            placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
                     </div>
-                </div>
+
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -73,7 +63,7 @@
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block" id="submit">Sign In</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -112,6 +102,14 @@
 {{--<script src="{{ asset('assets/jquery-validation/additional-methods.min.js') }}"></script>--}}
 
 
+<script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+<!-- Bootstrap 4 -->
+<script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ asset('assets/dist/js/demo.js') }}"></script>
+
 <script>
     $(function () {
         $('#quickForm').validate({
@@ -124,9 +122,9 @@
                     required: true,
                     minlength: 5
                 },
-                terms: {
-                    required: true
-                },
+                collage: {
+                    required: true,
+                }
             },
             messages: {
                 email: {
@@ -137,7 +135,9 @@
                     required: "Please provide a password",
                     minlength: "Your password must be at least 5 characters long"
                 },
-                terms: "Please accept our terms"
+                collage: {
+                    required:"Please Select Collage"
+                }
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {
@@ -151,6 +151,21 @@
                 $(element).removeClass('is-invalid');
             }
         });
+    });
+</script>
+<script>
+    $(function() {
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+        @if(Session::has('type'))
+        toastr.error('{{ Session::get('message') }}')
+        @endif
+
+
     });
 </script>
 </body>

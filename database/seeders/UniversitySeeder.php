@@ -14,12 +14,17 @@ class UniversitySeeder extends Seeder
      */
     public function run()
     {
-        university::insert([
-            'name' => 'MKBU',
-            'code'=>'001',
-            'contact'=>'1234567890',
-            'address'=>'Bhavnagar',
-            'user_id'=>1
-        ]);
+        $faker = \Faker\Factory::create();
+        for ($i = 100; $i < 120; $i++)
+        {
+            university::insert([
+                'name' => $faker->name(),
+                'code'=>$i,
+                'contact'=>'1234567'.$i,
+                'address'=>'Bhavnagar',
+                'user_id'=>2
+            ]);
+
+        }
     }
 }

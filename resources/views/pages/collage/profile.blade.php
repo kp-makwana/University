@@ -4,8 +4,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-
-                    <!-- Profile Image -->
+                @php $user = \Illuminate\Support\Facades\Auth::user() @endphp
+                <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
@@ -13,23 +13,23 @@
                                      src="{{ asset('img/logo.png') }}" alt="User profile picture">
                             </div>
 
-                            <h3 class="profile-username text-center">Nina Mcintire</h3>
-
-                            <p class="text-muted text-center">Software Engineer</p>
-
                             <ul class="list-group list-group-unbordered mb-3">
                                 <li class="list-group-item">
-                                    <b>Followers</b> <a class="float-right">1,322</a>
+                                    <b>Principal name</b> <a class="float-right">KP Makwana</a>
+                                </li>
+
+                                <li class="list-group-item">
+                                    <b>Total staff</b> <a class="float-right">15</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Following</b> <a class="float-right">543</a>
+                                    <b>Students</b> <a class="float-right">{{ \App\Models\Student::count() }}</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <b>Friends</b> <a class="float-right">13,287</a>
+                                    <b>Collage Code</b> <a class="float-right">{{ $user->collage->code }}</a>
                                 </li>
                             </ul>
 
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+{{--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>--}}
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -52,7 +52,7 @@
 
                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                            <p class="text-muted">Malibu, California</p>
+                            <p class="text-muted">{{ $user->collage->address }}a</p>
 
                             <hr>
 
@@ -86,8 +86,7 @@
                                     <!-- Post -->
                                     <div class="post">
                                         <div class="user-block">
-                                            <img class="img-circle img-bordered-sm"
-                                                 src="../../dist/img/user1-128x128.jpg" alt="user image">
+{{--                                            <img class="img-circle img-bordered-sm" src="" alt="user image">--}}
                                             <span class="username">
                           <a href="#">Jonathan Burke Jr.</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>

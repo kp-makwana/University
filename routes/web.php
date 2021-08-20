@@ -17,18 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware('no-auth')->group(function () {
 
-Route::get('/login', [CollageController::class, 'login'])->name('index');
-Route::post('/login', [LoginController::class, 'login'])->name('login');
+    Route::get('/', function (){
+        return view('pages.collage.login');
+    });
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('DoLogin');
+});
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/index', function () {
-        return view('pages.collage.index');
-    })->name('index');
-
-    Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
-    Route::get('/students', [CollageController::class, 'index'])->name('students');
+    Route::get('/index', [CollageController::class, 'index'])->name('index');
+    Route::get('/studentList', [CollageController::class, 'studentList'])->name('studentList');
     Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
     Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');
 
@@ -36,11 +37,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
     Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
 
-    Route::get('profile', function () {
-        return view('pages.collage.profile');
-    })->name('profile');
+    Route::get('/profile', [CollageController::class,'profile'])->name('profile');
 
     Route::get('/profile', function () {
         return view('pages.collage.profile');
     })->name('profile');
+
+    Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
 });
+

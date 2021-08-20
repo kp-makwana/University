@@ -14,15 +14,20 @@ class CertificateSeeder extends Seeder
      */
     public function run()
     {
-        Certificate::insert([
-            'user_id'=>1,
-            'name' => 'BCA',
-            'issue_date'=>now(),
-            'stream_class'=>'12 class',
-            'language'=>'English',
-            'passing_year'=>'2017',
-            'obtain_class'=>'A',
-            'status'=>1,
-        ]);
+        for ($i = 0; $i < 20; $i++)
+        {
+            Certificate::insert(
+                [
+                    'student_id' => 2,
+                    'name' => 'BCA',
+                    'issue_date' => now(),
+                    'stream_class' => '12 class',
+                    'language' => 'English',
+                    'passing_year' => '2017',
+                    'obtain_class' => 'A',
+                    'status' => 1
+                ]);
+        }
+
     }
 }

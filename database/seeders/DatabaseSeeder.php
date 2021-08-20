@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Certificate;
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call([UserSeeder::class]);
         $this->call([UniversitySeeder::class]);
         $this->call([CollageSeeder::class]);
+        $this->call([StudentSeeder::class]);
+        $this->call([CertificateSeeder::class]);
     }
 }

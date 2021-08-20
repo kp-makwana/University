@@ -13,8 +13,9 @@
                         <table id="table" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>id</th>
                                 <th>Student Name</th>
+                                <th>Stream</th>
+                                <th>Date Of Birth</th>
                                 <th>Email</th>
                                 <th>Phone</th>
                             </tr>
@@ -22,8 +23,9 @@
                             <tbody>
                             @foreach($students as $student)
                             <tr>
-                                <td>{{ $student->id }}</td>
                                 <td>{{ $student->FullName }}</td>
+                                <td>BCA</td>
+                                <td>{{ $student->date_of_birth }}</td>
                                 <td>{{ $student->user->email }}</td>
                                 <td>{{ $student->phone }}</td>
                             </tr>

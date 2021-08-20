@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function collage(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Collage::class, 'user_id', 'id');
+    }
 }

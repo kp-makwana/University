@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\Hash;
 
 class CollageController extends Controller
 {
-    public function login()
+    public function index()
     {
-        return view('pages.collage.login');
+        return view('pages.collage.index');
     }
-    public function index(Request $request)
+
+    public function studentList(Request $request)
     {
         $students = Student::with('user')->get();
         return view('pages.collage.studentList',['students'=>$students]);
@@ -27,11 +28,11 @@ class CollageController extends Controller
 
     public function add_student(Request $request): \Illuminate\Http\RedirectResponse
     {
-//        dd('here',$request->all());
         #param
         $first_name = $request->input('first_name');
         $mid_name = $request->input('mid_name');
         $last_name = $request->input('last_name');
+        $stream = $request->input('stream');
         $dob = $request->input('dob');
         $gender = $request->input('gender');
         $email = $request->input('email');
@@ -52,17 +53,23 @@ class CollageController extends Controller
         $student->first_name = $first_name;
         $student->mid_name = $mid_name ?? '';
         $student->last_name = $last_name;
+        $student->stream = $stream;
         $student->date_of_birth = $dob;
         $student->gender = $gender;
         $student->phone = $phone;
         $student->address = $address;
         $student->save();
 
-        return redirect()->route('students');
+        return redirect()->route('studentList');
     }
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('index');
+        return redirect()->route('login');
+    }
+
+    public function profile()
+    {
+        return view('profile',['user'=>Auth::user()]);
     }
 }

@@ -19,6 +19,7 @@ class CreateStudentsTable extends Migration
             $table->string('first_name');
             $table->string('mid_name')->nullable();
             $table->string('last_name');
+            $table->string('stream');
             $table->date('date_of_birth');
             $table->enum('gender',['female'=>0,'male'=>1]);
             $table->string('phone')->unique();

@@ -18,7 +18,7 @@ class CollageController extends Controller
     public function studentList(Request $request)
     {
         $students = Student::with('user')->get();
-        return view('pages.collage.studentList',['students'=>$students]);
+        return view('pages.collage.studentList', ['students' => $students]);
     }
 
     public function student_form()
@@ -62,6 +62,7 @@ class CollageController extends Controller
 
         return redirect()->route('studentList');
     }
+
     public function logout()
     {
         Auth::logout();
@@ -70,6 +71,6 @@ class CollageController extends Controller
 
     public function profile()
     {
-        return view('profile',['user'=>Auth::user()]);
+        return view('profile', ['user' => Auth::user()]);
     }
 }

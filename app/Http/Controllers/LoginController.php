@@ -13,6 +13,7 @@ class LoginController extends Controller
     {
         return view('pages.collage.login');
     }
+
     public function login(Request $request)
     {
         $collage = Collage::with('user')->where('id', $request->input('collage'))->firstOrFail();
@@ -20,15 +21,15 @@ class LoginController extends Controller
             $result = User::where('email', $request->input('email'))->exists();
             if ($result) {
                 if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
-//                    if (Auth()->user()->type === 1) {
-//                        return redirect()->route('index');
-//                    }
+                    if (Auth()->user()->type === 0) {
+                        return redirect()->route('index');
+                    }
                     return redirect()->route('index');
                 }
                 return redirect()->back()->with(['type' => 'Password', 'message' => 'Invalid password']);
             }
         }
-            return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Username or password']);
+        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Username or password']);
 
     }
 }

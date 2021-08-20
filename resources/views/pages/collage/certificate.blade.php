@@ -1,4 +1,4 @@
-@extends('layouts.navbar')
+@extends('pages.collage.navbar')
 @section('content')
 
 @endsection

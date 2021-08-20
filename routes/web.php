@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\StudentController;
 use App\Http\Controllers\CollageController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
@@ -18,8 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('no-auth')->group(function () {
-
-    Route::get('/', function (){
+    Route::get('/', function () {
         return view('pages.collage.login');
     });
     Route::get('/login', [LoginController::class, 'index'])->name('login');
@@ -27,7 +25,6 @@ Route::middleware('no-auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-
     Route::get('/index', [CollageController::class, 'index'])->name('index');
     Route::get('/studentList', [CollageController::class, 'studentList'])->name('studentList');
     Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
@@ -37,12 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
     Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
 
-    Route::get('/profile', [CollageController::class,'profile'])->name('profile');
-
-    Route::get('/profile', function () {
-        return view('pages.collage.profile');
-    })->name('profile');
-
+    Route::get('/profile', [CollageController::class, 'profile'])->name('profile');
     Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
+
+    Route::prefix('admin')->as('admin.')->group(function () {
+        Route::get('/index', [CollageController::class, 'index'])->name('index');
+    });
 });
 

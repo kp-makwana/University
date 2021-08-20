@@ -1,4 +1,4 @@
-@extends('layouts.navbar')
+@extends('pages.collage.navbar')
 @section('content')
     <div class="container content-wrapper">
         <!-- SELECT2 EXAMPLE -->
@@ -10,87 +10,88 @@
             <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
             @csrf
             <!-- /.card-header -->
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Student Name</label>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="first_name"
-                                       placeholder="Student First Name *"/>
+                                <label>Student Name</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="first_name"
+                                           placeholder="Student First Name *"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="mid_name"
+                                           placeholder="Student Middle Name"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="last_name"
+                                           placeholder="Student Last Name *"/>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="mid_name"
-                                       placeholder="Student Middle Name"/>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="last_name"
-                                       placeholder="Student Last Name *"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <div class="form-group">
-                                <input type="email" name="email" class="form-control" placeholder="Student Email *"/>
-                            </div>
-                            <label>Phone</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="phone"
-                                       placeholder="Student Mobile number *"/>
-                            </div>
-                            <label>Address</label>
-                            <div class="form-group">
+                                <label>Email</label>
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control"
+                                           placeholder="Student Email *"/>
+                                </div>
+                                <label>Phone</label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="phone"
+                                           placeholder="Student Mobile number *"/>
+                                </div>
+                                <label>Address</label>
+                                <div class="form-group">
                                             <textarea type="text" class="form-control" name="address"
                                                       placeholder="Student Address *"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <!-- /.form-group -->
+                            <!-- /.form-group -->
 
-                        <!-- /.form-group -->
-                    </div>
-                    <div class="col-md-6">
-                    <!-- /.col -->
-                        <div class="form-group">
-                            <label>Streaming</label>
-                            <select name="stream" class="form-control">
-                                <option class="hidden" selected disabled>Select Stream</option>
-                                @foreach(App\Models\Student::STREAMING as $key=>$value)
-                                    <option value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select>
+                            <!-- /.form-group -->
                         </div>
-                        <div class="form-group col-sm-6">
-                            <label>Date Of Birth</label>
-{{--                            <div class="form-group">--}}
-                                <input type="date" name="dob" class="form-control"
-                                       placeholder="Student Last Name *"/>
-{{--                            </div>--}}
-                        </div>
-                        <div class="form-group col-sm-6">
-                            <label>Gender</label>
-                            <div class="maxl">
-                                <select name="gender" class="form-control" id="gender">
-                                    <option class="hidden" selected disabled>Select Gender</option>
-                                    @foreach(config('constants.GENDER') as $key=>$value)
+                        <div class="col-md-6">
+                            <!-- /.col -->
+                            <div class="form-group">
+                                <label>Streaming</label>
+                                <select name="stream" class="form-control">
+                                    <option class="hidden" selected disabled>Select Stream</option>
+                                    @foreach(App\Models\Student::STREAMING as $key=>$value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <div class="form-group col-sm-6">
+                                <label>Date Of Birth</label>
+                                {{--                            <div class="form-group">--}}
+                                <input type="date" name="dob" class="form-control"
+                                       placeholder="Student Last Name *"/>
+                                {{--                            </div>--}}
+                            </div>
+                            <div class="form-group col-sm-6">
+                                <label>Gender</label>
+                                <div class="maxl">
+                                    <select name="gender" class="form-control" id="gender">
+                                        <option class="hidden" selected disabled>Select Gender</option>
+                                        @foreach(config('constants.GENDER') as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
+                        <!-- /.col -->
                     </div>
-                    <!-- /.col -->
-                </div>
 
-                <!-- /.row -->
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-                <div class="form-group">
-                    <input type="button" class="btn btn-danger align-content-end" value="cancel">
-                    <input type="button" class="btn btn-default" value="reset">
-                    <input type="submit" class="btn btn-success" value="submit">
+                    <!-- /.row -->
                 </div>
-            </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <div class="form-group">
+                        <input type="button" class="btn btn-danger align-content-end" value="cancel">
+                        <input type="button" class="btn btn-default" value="reset">
+                        <input type="submit" class="btn btn-success" value="submit">
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -142,11 +143,11 @@
                     },
                     email: {
                         required: true,
-                        email:true
+                        email: true
                     },
                     phone: {
                         required: true,
-                        min:10
+                        min: 10
                     },
                     address: {
                         required: true,
@@ -165,22 +166,22 @@
                 messages: {
                     first_name: {
                         required: "Last Name Must Be Required.",
-                        min:"Minimum 3 Character."
+                        min: "Minimum 3 Character."
                     },
                     last_name: {
                         required: "First Name Must Be Required.",
-                        min:"Minimum 3 Character."
+                        min: "Minimum 3 Character."
                     },
                     email: {
                         required: "Email Must Be Required.",
-                        email:"Email Not Proper Format."
+                        email: "Email Not Proper Format."
                     },
                     phone: {
                         required: "Phone Number Must Be Required.",
                     },
                     address: {
                         required: "Address Must Be Required.",
-                        min:"Address Must Be in 5 Character"
+                        min: "Address Must Be in 5 Character"
                     },
                     stream: {
                         required: "Please Select Stream.",

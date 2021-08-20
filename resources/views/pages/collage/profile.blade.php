@@ -1,10 +1,10 @@
-@extends('layouts.navbar')
+@extends('pages.collage.navbar')
 @section('content')
     <section class="content-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-3">
-                @php $user = \Illuminate\Support\Facades\Auth::user() @endphp
+                @php use Illuminate\Support\Facades\Auth;$user = Auth::user() @endphp
                 <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
@@ -29,7 +29,7 @@
                                 </li>
                             </ul>
 
-{{--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>--}}
+                            {{--                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>--}}
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -86,7 +86,7 @@
                                     <!-- Post -->
                                     <div class="post">
                                         <div class="user-block">
-{{--                                            <img class="img-circle img-bordered-sm" src="" alt="user image">--}}
+                                            {{--                                            <img class="img-circle img-bordered-sm" src="" alt="user image">--}}
                                             <span class="username">
                           <a href="#">Jonathan Burke Jr.</a>
                           <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>

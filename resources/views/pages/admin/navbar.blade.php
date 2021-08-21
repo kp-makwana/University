@@ -249,37 +249,37 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.schoolList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>List Of Schools</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.schoolForm') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add School</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.collageList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>List Of Collages</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.collageForm') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Collage</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.universitiesList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>List Of University</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="{{ route('admin.universityForm') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add University</p>
                                 </a>
@@ -289,7 +289,6 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-hands-helping"></i>
-
                             <p>
                                 Students
                                 <i class="right fas fa-angle-left"></i>
@@ -334,31 +333,16 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.helpSupport') }}" class="nav-link">
                             <i class="nav-icon fas fa-hands-helping"></i>
 
                             <p>
                                 Help & Support
-                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Help</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Support</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('profile') }}" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt"></i>
                             <p>
                                 Profile

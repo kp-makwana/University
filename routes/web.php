@@ -56,8 +56,24 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/add_student', [AdminController::class, 'student_form'])->name('student_form');
         Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
 
+        #school
+        Route::get('/schoolList', [AdminController::class, 'schoolList'])->name('schoolList');
+        Route::get('/add_school', [AdminController::class, 'schoolForm'])->name('schoolForm');
+        Route::post('/add_school', [AdminController::class, 'addSchool'])->name('addSchool');
+
+        #collage
+        Route::get('/collageList', [AdminController::class, 'collageList'])->name('collageList');
+        Route::get('/add_collage', [AdminController::class, 'collageForm'])->name('collageForm');
+        Route::post('/add_collage', [AdminController::class, 'addCollage'])->name('addCollage');
+
+        #university
+        Route::get('/universitiesList', [AdminController::class, 'universitiesList'])->name('universitiesList');
+        Route::get('/add_university', [AdminController::class, 'universityForm'])->name('universityForm');
+        Route::post('/add_university', [AdminController::class, 'addUniversity'])->name('addUniversity');
+
         #certificate
         Route::get('/certificate', [AdminController::class, 'certificates'])->name('certificates');
+        Route::get('/help-support', [AdminController::class, 'helpSupport'])->name('helpSupport');
 
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });

@@ -18,13 +18,16 @@ class LoginController extends Controller
     {
         $collage = Collage::with('user')->where('id', $request->input('collage'))->firstOrFail();
         if ($collage) {
-            if ($collage->user->email === $request->input('email')) {
-                if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
-                    return redirect()->route('index');
-                } else {
-                    return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Password']);
+            if ($collage->user->type == 0) {
+                if ($collage->user->email === $request->input('email')) {
+                    if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                        return redirect()->route('index');
+                    } else {
+                        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Password']);
+                    }
                 }
             }
+
         }
         return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
@@ -41,5 +44,10 @@ class LoginController extends Controller
             }
         }
         return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

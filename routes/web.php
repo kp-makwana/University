@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CollageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('no-auth')->group(function () {
+Route::middleware(['no-auth'])->group(function () {
 
     #login
     Route::get('/', function () {
@@ -31,23 +32,29 @@ Route::middleware('no-auth')->group(function () {
     Route::post('/adminLogin', [LoginController::class, 'adminLogin'])->name('adminLogin');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth','check.type'])->group(function () {
     Route::get('/index', [CollageController::class, 'index'])->name('index');
-    Route::get('/studentList', [CollageController::class, 'studentList'])->name('studentList');
-    Route::get('/add_student', [CollageController::class, 'student_form'])->name('student_form');
-    Route::post('/add_student', [CollageController::class, 'add_student'])->name('add_student');
+
+    #student
+    Route::get('/studentList', [StudentController::class, 'studentList'])->name('studentList');
+    Route::get('/add_student', [StudentController::class, 'student_form'])->name('student_form');
+    Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
 
     Route::get('/certificate', [CertificateController::class, 'index'])->name('certificates');
     Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
     Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
 
     Route::get('/profile', [CollageController::class, 'profile'])->name('profile');
-    Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
-
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 });
-Route::middleware('admin')->group(function () {
+Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/index', [AdminController::class, 'index'])->name('index');
+
+        #student
+        Route::get('/studentList', [StudentController::class, 'studentList'])->name('studentList');
+        Route::get('/add_student', [StudentController::class, 'student_form'])->name('student_form');
+        Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
     });
 });

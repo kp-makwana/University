@@ -289,13 +289,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('studentList') }}" class="nav-link">
+                                <a href="{{ route('admin.studentList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>List Of Students</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('student_form') }}" class="nav-link">
+                                <a href="{{ route('admin.student_form') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Students</p>
                                 </a>

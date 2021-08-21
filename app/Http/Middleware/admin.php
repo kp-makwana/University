@@ -19,11 +19,11 @@ class admin
     {
         $result = Auth::check();
         if ($result) {
-            if (Auth::user()->type === 1) {
+            if (Auth::user()->type == 1) {
                 return $next($request);
             }
+            return redirect()->route('index');
         }
         return redirect()->route('login');
-
     }
 }

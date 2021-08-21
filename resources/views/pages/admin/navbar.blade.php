@@ -310,27 +310,12 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('admin.certificates') }}" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
-                                Certificate
-                                <i class="right fas fa-angle-left"></i>
+                                Claimed Certificate
                             </p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Generate Certificate</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.certificates') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Certificate List</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -355,6 +340,20 @@
         <!-- /.sidebar -->
     </aside>
 
+    <script>
+        $(function () {
+            $('#table').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                "responsive": true,
+
+            });
+        });
+    </script>
     <!-- Content Wrapper. Contains page content -->
 @yield('content')
 
@@ -374,20 +373,6 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-<script>
-    $(function () {
-        $('#table').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": false,
-            "autoWidth": true,
-            "responsive": true,
-
-        });
-    });
-</script>
 <!-- jQuery -->
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -425,9 +410,9 @@
 <!-- jQuery -->
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- DataTables -->
-{{--<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--}}
+<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap JavaScript -->
-{{--<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--}}
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <!-- App scripts -->
 
 <!--datatable-->

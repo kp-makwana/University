@@ -11,19 +11,21 @@
                             <table id="table" class="table table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>Name</th>
+                                    <th>Student Name</th>
+                                    <th>Collage Name</th>
                                     <th>Issue Date</th>
-                                    <th>Class</th>
+                                    <th>Stream</th>
+                                    <th>Status</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($certificates as $certificate)
                                     <tr>
-                                        <td>{{ $certificate->id }}</td>
-                                        <td>{{ $certificate->name }}</td>
-                                        <td>{{ $certificate->issue_date   }}</td>
-                                        <td>{{ $certificate->stream_class }}</td>
+                                        <td>{{ $certificate->student->fullname }}</td>
+                                        <td>MKBU</td>
+                                        <td>{{ $certificate->issue_date }}</td>
+                                        <td>{{ $certificate->stream_class   }}</td>
+                                        <td>{{ \App\Models\Certificate::STATUS[$certificate->status] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>

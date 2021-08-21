@@ -316,6 +316,20 @@
         <!-- /.sidebar -->
     </aside>
 
+    <script>
+        $(function () {
+            $('#table').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": false,
+                "autoWidth": true,
+                "responsive": true,
+
+            });
+        });
+    </script>
     <!-- Content Wrapper. Contains page content -->
 @yield('content')
 

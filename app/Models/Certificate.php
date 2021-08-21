@@ -28,7 +28,11 @@ class Certificate extends Model
         'fail' => 'fail',
     ];
     public const STATUS = [
-        '0' => 'unclaimed',
-        '1' => 'claimed'
+        0 => 'unclaimed',
+        1 => 'claimed'
     ];
+    public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Student::class, 'student_id', 'id');
+    }
 }

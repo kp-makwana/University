@@ -288,7 +288,6 @@
                     <li class="nav-item">
                         <a href="{{ route('helpSupport') }}" class="nav-link">
                             <i class="nav-icon fas fa-hands-helping"></i>
-
                             <p>
                                 Help & Support
                             </p>

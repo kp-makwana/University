@@ -28,22 +28,10 @@ class AdminController extends Controller
         return view('pages.admin.certificateList', ['certificates' => $certificates]);
     }
 
-    #student
-    public function studentList(Request $request)
-    {
-        $students = Student::with('user')->get();
-        return view('pages.admin.studentList', ['students' => $students]);
-    }
-
-    public function student_form()
-    {
-        return view('pages.admin.studentForm');
-    }
-
     //school
     public function schoolList(Request $request)
     {
-        $schools = School::all();
+        $schools = School::with('user')->get();
         return view('pages.admin.schoolList', ['schools' => $schools]);
     }
 
@@ -60,8 +48,8 @@ class AdminController extends Controller
     //Collage
     public function collageList(Request $request)
     {
-        $collages = collage::all();
-        return view('pages.admin.collageForm.blade.php', ['collages' => $collages]);
+        $collages = collage::with('user')->get();
+        return view('pages.admin.collageList', ['collages' => $collages]);
     }
 
     public function collageForm()
@@ -77,7 +65,7 @@ class AdminController extends Controller
     //University
     public function universitiesList(Request $request)
     {
-        $universities = university::all();
+        $universities = university::with('user')->get();
         return view('pages.admin.universitiesList', ['universities' => $universities]);
     }
 
@@ -91,9 +79,17 @@ class AdminController extends Controller
         dd('call');
     }
 
-    public function helpSupport()
+    #student
+    public function studentList(Request $request)
     {
-        return view('pages.admin.help-support');
+        $students = Student::with('user')->get();
+        return view('pages.admin.studentList', ['students' => $students]);
     }
+
+    public function student_form()
+    {
+        return view('pages.admin.studentForm');
+    }
+
 
 }

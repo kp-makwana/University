@@ -13,4 +13,8 @@ class Collage extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function university(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(university::class, 'university_id ', 'id');
+    }
 }

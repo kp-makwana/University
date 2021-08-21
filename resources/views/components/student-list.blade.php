@@ -30,28 +30,10 @@
                                 @endforeach
                                 </tbody>
                             </table>
-
-                            {{--                        {!! $dataTable->table() !!}--}}
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {{--{!! $dataTable->scripts() !!}!--}}
-    <script>
-        $(function () {
-            $('#table').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": false,
-                "autoWidth": true,
-                "responsive": true,
-
-            });
-        });
-    </script>
 </div>

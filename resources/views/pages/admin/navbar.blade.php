@@ -333,15 +333,6 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('admin.helpSupport') }}" class="nav-link">
-                            <i class="nav-icon fas fa-hands-helping"></i>
-
-                            <p>
-                                Help & Support
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user-alt"></i>
                             <p>
@@ -383,7 +374,20 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<script>
+    $(function () {
+        $('#table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "responsive": true,
 
+        });
+    });
+</script>
 <!-- jQuery -->
 <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -421,9 +425,9 @@
 <!-- jQuery -->
 <script src="//code.jquery.com/jquery.js"></script>
 <!-- DataTables -->
-<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+{{--<script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>--}}
 <!-- Bootstrap JavaScript -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{{--<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>--}}
 <!-- App scripts -->
 
 <!--datatable-->
@@ -440,5 +444,6 @@
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 @stack('scripts')
+
 </body>
 </html>

@@ -43,6 +43,7 @@ Route::middleware(['auth','check.type'])->group(function () {
     Route::get('/add-certificate', [CertificateController::class, 'certificate_form'])->name('certificate_form');
     Route::post('/add-certificate', [CertificateController::class, 'addCertificate'])->name('addCertificate');
 
+    Route::get('/help-support', [CollageController::class, 'helpSupport'])->name('helpSupport');
     Route::get('/profile', [CollageController::class, 'profile'])->name('profile');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -50,11 +51,6 @@ Route::middleware(['auth','check.type'])->group(function () {
 Route::middleware(['admin'])->group(function () {
     Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/index', [AdminController::class, 'index'])->name('index');
-
-        #student
-        Route::get('/studentList', [AdminController::class, 'studentList'])->name('studentList');
-        Route::get('/add_student', [AdminController::class, 'student_form'])->name('student_form');
-        Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
 
         #school
         Route::get('/schoolList', [AdminController::class, 'schoolList'])->name('schoolList');
@@ -70,6 +66,11 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/universitiesList', [AdminController::class, 'universitiesList'])->name('universitiesList');
         Route::get('/add_university', [AdminController::class, 'universityForm'])->name('universityForm');
         Route::post('/add_university', [AdminController::class, 'addUniversity'])->name('addUniversity');
+
+        #student
+        Route::get('/studentList', [AdminController::class, 'studentList'])->name('studentList');
+        Route::get('/add_student', [AdminController::class, 'student_form'])->name('student_form');
+        Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
 
         #certificate
         Route::get('/certificate', [AdminController::class, 'certificates'])->name('certificates');

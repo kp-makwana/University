@@ -45,6 +45,7 @@ class LoginController extends Controller
         }
         return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
+
     public function logout()
     {
         Auth::logout();

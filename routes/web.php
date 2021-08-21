@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['no-auth'])->group(function () {
-
     #login
     Route::get('/', function () {
         return view('pages.collage.login');

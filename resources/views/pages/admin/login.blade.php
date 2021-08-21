@@ -41,7 +41,7 @@
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" name="password" id="exampleInputPassword1" class="form-control"
                            placeholder="Password">
-                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-8">
@@ -127,7 +127,7 @@
                     minlength: "Your password must be at least 5 characters long"
                 },
                 collage: {
-                    required:"Please Select Collage"
+                    required: "Please Select Collage"
                 }
             },
             errorElement: 'span',
@@ -145,7 +145,7 @@
     });
 </script>
 <script>
-    $(function() {
+    $(function () {
         var Toast = Swal.mixin({
             toast: true,
             position: 'top-end',

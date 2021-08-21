@@ -320,13 +320,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('certificate_form')     }}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Generate Certificate</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('certificates') }}" class="nav-link">
+                                <a href="{{ route('admin.certificates') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Certificate List</p>
                                 </a>
@@ -366,7 +366,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link">
+                        <a href="{{ route('admin.logout') }}" class="nav-link">
                             <i class="nav-icon fas fa-power-off"></i>
                             <p class="text-danger">
                                 Logout

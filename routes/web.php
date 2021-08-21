@@ -52,8 +52,14 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/index', [AdminController::class, 'index'])->name('index');
 
         #student
-        Route::get('/studentList', [StudentController::class, 'studentList'])->name('studentList');
-        Route::get('/add_student', [StudentController::class, 'student_form'])->name('student_form');
+        Route::get('/studentList', [AdminController::class, 'studentList'])->name('studentList');
+        Route::get('/add_student', [AdminController::class, 'student_form'])->name('student_form');
         Route::post('/add_student', [StudentController::class, 'add_student'])->name('add_student');
+
+        #certificate
+        Route::get('/certificate', [AdminController::class, 'certificates'])->name('certificates');
+
+        Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     });
+
 });

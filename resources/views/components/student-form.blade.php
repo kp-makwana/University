@@ -4,7 +4,6 @@
         <div class="card card-default">
             <div class="card-header">
                 <h3 class="card-title">Student Enrollment Form</h3>
-
             </div>
             <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
             @csrf
@@ -93,7 +92,6 @@
             </form>
         </div>
     @push('styles')
-
         <!-- Font Awesome -->
             <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
             <!-- icheck bootstrap -->
@@ -106,7 +104,6 @@
                   href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     @endpush
     @push('scripts')
-
         <!-- jQuery -->
             <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
             <!-- Bootstrap 4 -->
@@ -115,8 +112,6 @@
             <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
             <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
             {{--<script src="{{ asset('assets/jquery-validation/additional-methods.min.js') }}"></script>--}}
-
-
             <script src="{{ asset('assets/plugins/toastr/toastr.min.js') }}"></script>
             <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
@@ -140,7 +135,6 @@
                             },
                             address: {
                                 required: true,
-                                // min:5
                             },
                             stream: {
                                 required: true,
@@ -197,6 +191,5 @@
                 });
             </script>
         @endpush
-
     </div>
 </div>

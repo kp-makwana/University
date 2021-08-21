@@ -34,7 +34,6 @@
             </div>
         </div>
     </div>
-
     <script>
         $(function () {
             $('#table').DataTable({

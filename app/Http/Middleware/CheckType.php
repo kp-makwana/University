@@ -20,6 +20,7 @@ class CheckType
         $result = Auth::check();
         if ($result) {
             if (Auth::user()->type == 0) {
+//                dd('here');
                 return $next($request);
             }
         }

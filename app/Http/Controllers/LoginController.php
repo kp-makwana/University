@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collage;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,10 +31,15 @@ class LoginController extends Controller
 
     public function adminLogin(Request $request)
     {
-        if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
-            return redirect()->route('admin.index');
-        } else {
-            return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+        $check = User::where('email', $request->input('email'))->first();
+
+        if ($check) {
+            if ($check->type == 1) {
+                if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                    return redirect()->route('admin.index');
+                }
+            }
         }
+        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
 }

@@ -44,8 +44,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [CollageController::class, 'profile'])->name('profile');
     Route::get('/logout', [CollageController::class, 'logout'])->name('logout');
 
+
+});
+Route::middleware('admin')->group(function () {
     Route::prefix('admin')->as('admin.')->group(function () {
         Route::get('/index', [AdminController::class, 'index'])->name('index');
     });
 });
-

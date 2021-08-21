@@ -207,7 +207,7 @@
             <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3" style="opacity: .8">
             <span
-                class="brand-text font-weight-light">{{ \Illuminate\Support\Facades\Auth::user()->collage->name }}</span>
+                class="brand-text font-weight-light">{{ \Illuminate\Support\Facades\Auth::user()->collage->name ?? "" }}</span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar">
@@ -239,7 +239,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
@@ -251,7 +251,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('studentList') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Student List</p>
+                                    <p>List Of Students</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -262,7 +262,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-certificate"></i>
                             <p>
@@ -272,20 +272,20 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
+                                <a href="{{ route('certificates') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>List Of Certificate</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('certificate_form')     }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Generate Certificate</p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('certificates') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Certificate List</p>
-                                </a>
-                            </li>
                         </ul>
                     </li>
-                    <li class="nav-item menu-open">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-hands-helping"></i>
 
@@ -392,7 +392,6 @@
 <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <!-- Bootstrap JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- App scripts -->
 
 <!--datatable-->
 <script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>

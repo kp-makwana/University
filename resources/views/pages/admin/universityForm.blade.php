@@ -20,13 +20,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input type="text" class="form-control col-md-4" name="code"
+                                    <input type="text" class="form-control col-md-4" name="code" onkeypress="return isNumberKey(event)"
                                            placeholder="University Code *"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact</label>
-                                    <input type="text" class="form-control" name="contact"
-                                           placeholder="Contact Address *"/>
+                                    <input type="phone" class="form-control" name="contact" onkeypress="return isNumberKey(event)"
+                                           placeholder="Contact Number *"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>

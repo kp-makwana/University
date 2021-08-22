@@ -11,8 +11,8 @@ class CheckType
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -20,7 +20,6 @@ class CheckType
         $result = Auth::check();
         if ($result) {
             if (Auth::user()->type == 0) {
-//                dd('here');
                 return $next($request);
             }
         }

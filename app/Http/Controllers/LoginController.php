@@ -14,7 +14,7 @@ class LoginController extends Controller
         return view('pages.collage.login');
     }
 
-    public function login(Request $request)
+    public function login(Request $request): \Illuminate\Http\RedirectResponse
     {
         $collage = Collage::with('user')->where('id', $request->input('collage'))->firstOrFail();
         if ($collage) {
@@ -32,7 +32,7 @@ class LoginController extends Controller
         return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
 
-    public function adminLogin(Request $request)
+    public function adminLogin(Request $request): \Illuminate\Http\RedirectResponse
     {
         $check = User::where('email', $request->input('email'))->first();
 
@@ -46,7 +46,7 @@ class LoginController extends Controller
         return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
 
-    public function logout()
+    public function logout(): \Illuminate\Http\RedirectResponse
     {
         Auth::logout();
         return redirect()->route('login');

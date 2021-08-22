@@ -15,6 +15,7 @@ class CollageController extends Controller
     {
         return view('pages.collage.profile', ['user' => Auth::user()]);
     }
+
     public function helpSupport()
     {
         return view('pages.collage.help-support');

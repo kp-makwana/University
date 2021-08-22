@@ -22,7 +22,7 @@ class CreateCertificatesTable extends Migration
             $table->string('language');
             $table->string('passing_year');
             $table->string('obtain_class');
-            $table->enum('status',['claimed'=>1,'unclaimed'=>0]);
+            $table->enum('status', ['claimed' => 1, 'unclaimed' => 0]);
             $table->timestamps();
 
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');

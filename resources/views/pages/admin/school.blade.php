@@ -20,18 +20,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input type="text" class="form-control col-md-4" name="code"
+                                    <input type="text" class="form-control col-md-4" name="code" onkeypress="return isNumberKey(event)"
                                            placeholder="School Code *"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact</label>
-                                    <input type="text" class="form-control" name="contact"
+                                    <input type="text" class="form-control" name="contact" onkeypress="return isNumberKey(event)"
                                            placeholder="Contact Address *"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Address</label>
                                     <textarea type="text" class="form-control" name="address"
-                                           placeholder="School Address *"></textarea>
+                                              placeholder="School Address *"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
@@ -68,54 +68,54 @@
     <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
 
     <script>
-            $('#addSchool').validate({
-                rules: {
-                    name: {
-                        required: true,
-                    },
-                    code: {
-                        required: true,
-                    },
-                    contact: {
-                        required: true,
-                    },
-                    address: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    }
+        $('#addSchool').validate({
+            rules: {
+                name: {
+                    required: true,
                 },
-                messages: {
-                    name: {
-                        required: "School Name Must be Required.",
-                    },
-                    code: {
-                        required: "School Code Must be Required.",
-                    },
-                    contact: {
-                        required: "Contact Must be Required.",
-                    },
-                    address: {
-                        required: "Address Must be Required.",
-                    },
-                    email: {
-                        required: "Email Must be Required.",
-                        email:"Please Enter email Proper Format"
-                    }
+                code: {
+                    required: true,
                 },
-                errorElement: 'span',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
+                contact: {
+                    required: true,
                 },
-                highlight: function (element, errorClass, validClass) {
-                    $(element).addClass('is-invalid');
+                address: {
+                    required: true,
                 },
-                unhighlight: function (element, errorClass, validClass) {
-                    $(element).removeClass('is-invalid');
+                email: {
+                    required: true,
+                    email: true
                 }
-            });
+            },
+            messages: {
+                name: {
+                    required: "School Name Must be Required.",
+                },
+                code: {
+                    required: "School Code Must be Required.",
+                },
+                contact: {
+                    required: "Contact Must be Required.",
+                },
+                address: {
+                    required: "Address Must be Required.",
+                },
+                email: {
+                    required: "Email Must be Required.",
+                    email:"Please Enter email Proper Format"
+                }
+            },
+            errorElement: 'span',
+            errorPlacement: function (error, element) {
+                error.addClass('invalid-feedback');
+                element.closest('.form-group').append(error);
+            },
+            highlight: function (element, errorClass, validClass) {
+                $(element).addClass('is-invalid');
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $(element).removeClass('is-invalid');
+            }
+        });
     </script>
 @endpush

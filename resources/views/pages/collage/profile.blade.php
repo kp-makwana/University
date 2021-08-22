@@ -2,6 +2,12 @@
 @section('content')
     <section class="content-wrapper">
         <div class="container-fluid">
+            <div class="row col-md-12">
+                <div class="col-md-6 float-right">
+                    <img src="https://www.mkbhavuni.edu.in/mkbhavuniweb/images/mkbu-new-name.png" alt="">
+
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-6">
                 @php use Illuminate\Support\Facades\Auth;$user = Auth::user() @endphp

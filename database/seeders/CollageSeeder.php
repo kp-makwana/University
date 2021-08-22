@@ -21,7 +21,7 @@ class CollageSeeder extends Seeder
                 'user_id' => 1,
                 'university_id' => 1,
                 'code' => $i,
-                'contact' => '1234sds56'.$i,
+                'contact' => '1234sds56' . $i,
                 'address' => 'Bhavnagar',
             ]);
         }

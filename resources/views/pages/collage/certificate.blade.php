@@ -19,7 +19,8 @@
                                         <select name="roll_no" class="form-control">
                                             <option class="hidden" selected disabled>Select Student Roll No</option>
                                             @foreach(App\Models\Student::all() as $student)
-                                                <option value="{{ $student->id }}">{{ $student->id .'-'.$student->FullName}}</option>
+                                                <option
+                                                    value="{{ $student->id }}">{{ $student->id .'-'.$student->FullName}}</option>
                                             @endforeach
                                         </select>
                                     </div>

@@ -26,14 +26,14 @@ class AdminController extends Controller
 
     public function certificates()
     {
-        $certificates = Certificate::all();
+        $certificates = Certificate::orderBy('id', 'desc')->get();
         return view('pages.admin.certificateList', ['certificates' => $certificates]);
     }
 
     //school
     public function schoolList(Request $request)
     {
-        $schools = School::with('user')->get();
+        $schools = School::with('user')->orderBy('id', 'desc')->get();
         return view('pages.admin.schoolList', ['schools' => $schools]);
     }
 
@@ -42,7 +42,7 @@ class AdminController extends Controller
         return view('pages.admin.school');
     }
 
-    public function addSchool(Request $request)
+    public function addSchool(Request $request): \Illuminate\Http\RedirectResponse
     {
         #param
         $email = $request->input('email');
@@ -52,7 +52,7 @@ class AdminController extends Controller
 
         #school add
         $model = new School();
-        $this->add($request,$model,$user->id);
+        $this->add($request, $model, $user->id);
 
         return redirect()->route('admin.schoolList');
     }
@@ -60,7 +60,7 @@ class AdminController extends Controller
     //Collage
     public function collageList(Request $request)
     {
-        $collages = collage::with('user')->get();
+        $collages = collage::with('user')->orderBy('id', 'desc')->get();
         return view('pages.admin.collageList', ['collages' => $collages]);
     }
 
@@ -80,7 +80,7 @@ class AdminController extends Controller
         #school add
         $model = new Collage();
         $model->university_id = 1;
-        $this->add($request,$model,$user->id);
+        $this->add($request, $model, $user->id);
 
         return redirect()->route('admin.collageList');
     }
@@ -88,7 +88,7 @@ class AdminController extends Controller
     //University
     public function universitiesList(Request $request)
     {
-        $universities = university::with('user')->get();
+        $universities = university::with('user')->orderBy('id', 'desc')->get();
         return view('pages.admin.universitiesList', ['universities' => $universities]);
     }
 
@@ -97,7 +97,7 @@ class AdminController extends Controller
         return view('pages.admin.universityForm');
     }
 
-    public function addUniversity(Request $request)
+    public function addUniversity(Request $request): \Illuminate\Http\RedirectResponse
     {
         #param
         $email = $request->input('email');
@@ -107,7 +107,7 @@ class AdminController extends Controller
 
         #school add
         $model = new university();
-        $this->add($request,$model,$user->id);
+        $this->add($request, $model, $user->id);
 
         return redirect()->route('admin.universitiesList');
     }
@@ -115,7 +115,7 @@ class AdminController extends Controller
     #student
     public function studentList(Request $request)
     {
-        $students = Student::with('user')->get();
+        $students = Student::with('user')->orderBy('id', 'desc')->get();
         return view('pages.admin.studentList', ['students' => $students]);
     }
 
@@ -124,7 +124,7 @@ class AdminController extends Controller
         return view('pages.admin.studentForm');
     }
 
-    protected function user($email)
+    protected function user($email): User
     {
         $user = new User;
         $user->email = $email;
@@ -135,7 +135,7 @@ class AdminController extends Controller
         return $user;
     }
 
-    protected function add($request,$model,$user_id)
+    protected function add($request, $model, $user_id)
     {
         $name = $request->input('name');
         $code = $request->input('code');

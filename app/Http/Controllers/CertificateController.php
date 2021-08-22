@@ -9,7 +9,7 @@ class CertificateController extends Controller
 {
     public function index()
     {
-        $certificates = Certificate::all();
+        $certificates = Certificate::orderBy('id', 'desc')->get();
         return view('pages.collage.certificateList', ['certificates' => $certificates]);
     }
 

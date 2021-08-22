@@ -23,7 +23,7 @@ class StudentSeeder extends Seeder
                 'stream' => 'BCA',
                 'date_of_birth' => now(),
                 'gender' => 1,
-                'phone' => '1234657'.$i,
+                'phone' => '1234657' . $i,
                 'address' => 'Bhavnagar',
             ]);
         }

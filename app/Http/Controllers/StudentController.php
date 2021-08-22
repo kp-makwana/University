@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckEmail;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class StudentController extends Controller
 {
     public function studentList(Request $request)
     {
-        $students = Student::with('user')->get();
+        $students = Student::with('user')->orderBy('id', 'desc')->get();
         return view('pages.collage.studentList', ['students' => $students]);
     }
 
@@ -21,7 +21,7 @@ class StudentController extends Controller
         return view('pages.collage.studentForm');
     }
 
-    public function add_student(Request $request): \Illuminate\Http\RedirectResponse
+    public function add_student(CheckEmail $request): \Illuminate\Http\RedirectResponse
     {
         #param
         $first_name = $request->input('first_name');

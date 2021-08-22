@@ -21,7 +21,7 @@
                                 <tbody>
                                 @foreach($certificates as $certificate)
                                     <tr>
-                                        <td>{{ $certificate->student->fullname }}</td>
+                                        <td>{{ $certificate->name }}</td>
                                         <td>MKBU</td>
                                         <td>{{ $certificate->issue_date }}</td>
                                         <td>{{ $certificate->stream_class   }}</td>

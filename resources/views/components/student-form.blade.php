@@ -31,10 +31,11 @@
                                 <div class="form-group">
                                     <input type="email" name="email" class="form-control"
                                            placeholder="Student Email *"/>
+                                    @error('email')<p class="text-danger ml-3">*{{ $message }}</p>@enderror
                                 </div>
                                 <label>Phone</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="phone"
+                                    <input type="text" class="form-control" name="phone" onkeypress="return isNumberKey(event)"
                                            placeholder="Student Mobile number *"/>
                                 </div>
                                 <label>Address</label>

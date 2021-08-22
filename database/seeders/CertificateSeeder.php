@@ -14,8 +14,7 @@ class CertificateSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i < 20; $i++)
-        {
+        for ($i = 0; $i < 20; $i++) {
             Certificate::insert(
                 [
                     'student_id' => 2,

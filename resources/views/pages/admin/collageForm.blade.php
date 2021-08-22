@@ -2,7 +2,6 @@
 @section('content')
     <div>
         <div class="container content-wrapper">
-            <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="card-title">Add New School</h3>
@@ -20,12 +19,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Code</label>
-                                    <input type="text" class="form-control col-md-4" name="code"
+                                    <input type="text" class="form-control col-md-4" name="code" onkeypress="return isNumberKey(event)"
                                            placeholder="Collage Code *"/>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact</label>
-                                    <input type="text" class="form-control" name="contact"
+                                    <input type="text" class="form-control" name="contact" onkeypress="return isNumberKey(event)"
                                            placeholder="Contact Address *"/>
                                 </div>
                                 <div class="form-group">
@@ -40,7 +39,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /.row -->
                     </div>
                     <div class="card-footer">
                         <div class="form-group">

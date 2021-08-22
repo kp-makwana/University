@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'type' => 1,
             'password' => Hash::make('password')
         ]);
-        $name = [1=>'admin2@gmail.com',2=>'admin3@gmail.com',3=>'admin4@gmail.com',4=>'admin5@gmail.com',5=>'admin6@gmail.com',];
+        $name = [1 => 'admin2@gmail.com', 2 => 'admin3@gmail.com', 3 => 'admin4@gmail.com', 4 => 'admin5@gmail.com', 5 => 'admin6@gmail.com',];
 
         for ($i = 1; $i < 5; $i++) {
             User::insert([

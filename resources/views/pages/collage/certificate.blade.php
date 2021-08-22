@@ -7,7 +7,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Student Enrollment Form</h3>
                 </div>
-                <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
+                <form action="{{ route('addCertificate') }}" method="POST" name="add_student" id="add_student">
                 @csrf
                 <!-- /.card-header -->
                     <div class="card-body">
@@ -16,61 +16,71 @@
                                 <div class="form-group">
                                     <label>Student Roll No</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="roll_no"
-                                               placeholder="Student First Name *"/>
+                                        <select name="roll_no" class="form-control">
+                                            <option class="hidden" selected disabled>Select Student Roll No</option>
+                                            @foreach(App\Models\Student::all() as $student)
+                                                <option value="{{ $student->id }}">{{ $student->id .'-'.$student->FullName}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <label>Student Name</label>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" name="stud_name"
-                                               placeholder="Student Middle Name"/>
+                                        <input type="text" class="form-control" name="name"
+                                               placeholder="Student Full Name *"/>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label>Email</label>
-                                    <div class="form-group">
-                                        <input type="email" name="email" class="form-control"
-                                               placeholder="Student Email *"/>
-                                    </div>
-                                    <label>Phone</label>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" name="phone"
-                                               placeholder="Student Mobile number *"/>
-                                    </div>
-                                    <label>Address</label>
-                                    <div class="form-group">
-                                            <textarea type="text" class="form-control" name="address"
-                                                      placeholder="Student Address *"></textarea>
-                                    </div>
+                                    <label>Streaming</label>
+                                    <select name="stream_class" class="form-control">
+                                        <option class="hidden" selected disabled>Select Stream</option>
+                                        @foreach(App\Models\Certificate::STREAMING as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" name="issue_date" class="form-control"
+                                           placeholder="Student Last Name *"/>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <!-- /.col -->
-                                <div class="form-group">
-                                    <label>Streaming</label>
-                                    <select name="stream" class="form-control">
+                                <div class="form-group col-sm-6">
+                                    <label>Language</label>
+                                    <select name="language" class="form-control">
                                         <option class="hidden" selected disabled>Select Stream</option>
-                                        @foreach(App\Models\Student::STREAMING as $key=>$value)
+                                        @foreach(App\Models\Certificate::LANGUAGE as $key=>$value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label>Date Of Birth</label>
-                                    {{--                            <div class="form-group">--}}
-                                    <input type="date" name="dob" class="form-control"
-                                           placeholder="Student Last Name *"/>
-                                    {{--                            </div>--}}
+                                    <label>Passing Year</label>
+                                    <select name="passing_year" class="form-control">
+                                        <option class="hidden" selected disabled>Passing Year</option>
+                                        @foreach(App\Models\Certificate::PassYear as $year)
+                                            <option value="{{ $year }}">{{ $year }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <label>Gender</label>
-                                    <div class="maxl">
-                                        <select name="gender" class="form-control" id="gender">
-                                            <option class="hidden" selected disabled>Select Gender</option>
-                                            @foreach(config('constants.GENDER') as $key=>$value)
-                                                <option value="{{ $key }}">{{ $value }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
+                                    <label>Obtain Class</label>
+                                    <select name="obtain_class" class="form-control">
+                                        <option class="hidden" selected disabled>Select Obtain Class</option>
+                                        @foreach(App\Models\Certificate::OBTAIN as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <label>Status</label>
+                                    <select name="status" class="form-control">
+                                        <option class="hidden" selected disabled>Select Status</option>
+                                        @foreach(App\Models\Certificate::STATUS as $key=>$value)
+                                            <option value="{{ $key }}">{{ $value }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <!-- /.col -->
@@ -119,61 +129,55 @@
         $(function () {
             $('#add_student').validate({
                 rules: {
-                    first_name: {
+                    roll_no: {
                         required: true,
                     },
-                    last_name: {
-                        required: true,
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    phone: {
-                        required: true,
-                        min: 10
-                    },
-                    address: {
+                    name: {
                         required: true,
                     },
                     stream: {
                         required: true,
                     },
-                    dob: {
+                    language: {
                         required: true,
                     },
-                    gender: {
+                    passing_year: {
+                        required: true,
+                    },
+                    issue_date: {
+                        required: true,
+                    },
+                    obtain_class: {
+                        required: true,
+                    },
+                    status: {
                         required: true,
                     }
                 },
                 messages: {
-                    first_name: {
-                        required: "Last Name Must Be Required.",
-                        min: "Minimum 3 Character."
+                    roll_no: {
+                        required: "please Select Student.",
                     },
-                    last_name: {
-                        required: "First Name Must Be Required.",
-                        min: "Minimum 3 Character."
-                    },
-                    email: {
-                        required: "Email Must Be Required.",
-                        email: "Email Not Proper Format."
-                    },
-                    phone: {
-                        required: "Phone Number Must Be Required.",
-                    },
-                    address: {
-                        required: "Address Must Be Required.",
-                        min: "Address Must Be in 5 Character"
+                    name: {
+                        required: "Enter Student Name.",
                     },
                     stream: {
                         required: "Please Select Stream.",
                     },
-                    dob: {
-                        required: "Birth Date Must Be Required",
+                    language: {
+                        required: "Please Select Language.",
                     },
-                    gender: {
-                        required: "Select The Gender",
+                    passing_year: {
+                        required: "Please Select Passing Year.",
+                    },
+                    issue_date: {
+                        required: "Please Enter Date.",
+                    },
+                    obtain_class: {
+                        required: "Select Obtain Class.",
+                    },
+                    status: {
+                        required: "Select Status.",
                     }
                 },
                 errorElement: 'span',

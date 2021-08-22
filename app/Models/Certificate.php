@@ -31,6 +31,15 @@ class Certificate extends Model
         0 => 'unclaimed',
         1 => 'claimed'
     ];
+    public const PassYear = [
+       2015,
+       2016,
+       2017,
+       2018,
+       2019,
+       2020,
+       2021,
+    ];
     public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Student::class, 'student_id', 'id');

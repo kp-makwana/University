@@ -45,27 +45,14 @@ class AdminController extends Controller
     public function addSchool(Request $request)
     {
         #param
-        $name = $request->input('name');
-        $code = $request->input('code');
-        $contact = $request->input('contact');
-        $address = $request->input('address');
         $email = $request->input('email');
 
         #user create
-        $user = new User;
-        $user->email = $email;
-        $user->password = Hash::make('password');
-        $user->type = "0";
-        $user->save();
+        $user = $this->user($email);
 
         #school add
-        $school = new School;
-        $school->user_id = $user->id;
-        $school->name = $name;
-        $school->code = $code;
-        $school->contact = $contact;
-        $school->address = $address;
-        $school->save();
+        $model = new School();
+        $this->add($request,$model,$user->id);
 
         return redirect()->route('admin.schoolList');
     }
@@ -85,28 +72,15 @@ class AdminController extends Controller
     public function addCollage(Request $request): \Illuminate\Http\RedirectResponse
     {
         #param
-        $name = $request->input('name');
-        $code = $request->input('code');
-        $contact = $request->input('contact');
-        $address = $request->input('address');
         $email = $request->input('email');
 
         #user create
-        $user = new User;
-        $user->email = $email;
-        $user->password = Hash::make('password');
-        $user->type = "0";
-        $user->save();
+        $user = $this->user($email);
 
         #school add
-        $school = new Collage;
-        $school->name = $name;
-        $school->user_id = $user->id;
-        $school->university_id = 1;
-        $school->code = $code;
-        $school->contact = $contact;
-        $school->address = $address;
-        $school->save();
+        $model = new Collage();
+        $model->university_id = 1;
+        $this->add($request,$model,$user->id);
 
         return redirect()->route('admin.collageList');
     }
@@ -126,27 +100,14 @@ class AdminController extends Controller
     public function addUniversity(Request $request)
     {
         #param
-        $name = $request->input('name');
-        $code = $request->input('code');
-        $contact = $request->input('contact');
-        $address = $request->input('address');
         $email = $request->input('email');
 
         #user create
-        $user = new User;
-        $user->email = $email;
-        $user->password = Hash::make('password');
-        $user->type = "0";
-        $user->save();
+        $user = $this->user($email);
 
         #school add
-        $school = new university();
-        $school->name = $name;
-        $school->user_id = $user->id;
-        $school->code = $code;
-        $school->contact = $contact;
-        $school->address = $address;
-        $school->save();
+        $model = new university();
+        $this->add($request,$model,$user->id);
 
         return redirect()->route('admin.universitiesList');
     }
@@ -163,5 +124,31 @@ class AdminController extends Controller
         return view('pages.admin.studentForm');
     }
 
+    protected function user($email)
+    {
+        $user = new User;
+        $user->email = $email;
+        $user->password = Hash::make('password');
+        $user->type = "0";
+        $user->save();
+
+        return $user;
+    }
+
+    protected function add($request,$model,$user_id)
+    {
+        $name = $request->input('name');
+        $code = $request->input('code');
+        $contact = $request->input('contact');
+        $address = $request->input('address');
+
+        #add
+        $model->name = $name;
+        $model->user_id = $user_id;
+        $model->code = $code;
+        $model->contact = $contact;
+        $model->address = $address;
+        $model->save();
+    }
 
 }

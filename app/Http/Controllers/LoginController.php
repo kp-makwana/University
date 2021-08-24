@@ -25,13 +25,13 @@ class LoginController extends Controller
                     if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
                         return redirect()->route('index');
                     } else {
-                        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Password']);
+                        return back()->with(['type' => 'error', 'message' => 'Invalid Password']);
                     }
                 }
             }
 
         }
-        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+        return back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
 
     public function adminLogin(Request $request): \Illuminate\Http\RedirectResponse
@@ -45,7 +45,7 @@ class LoginController extends Controller
                 }
             }
         }
-        return redirect()->back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
+        return back()->with(['type' => 'error', 'message' => 'Invalid Email Or Password']);
     }
 
     public function logout(): \Illuminate\Http\RedirectResponse

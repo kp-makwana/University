@@ -160,6 +160,9 @@
                     },
                     status: {
                         required: true,
+                    },
+                    collage: {
+                        required: true,
                     }
                 },
                 messages: {
@@ -186,6 +189,9 @@
                     },
                     status: {
                         required: "Select Status.",
+                    },
+                    collage: {
+                        required: "Select Collage.",
                     }
                 },
                 errorElement: 'span',

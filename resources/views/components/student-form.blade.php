@@ -156,6 +156,9 @@
                             },
                             gender: {
                                 required: true,
+                            },
+                            collage: {
+                                required: true,
                             }
                         },
                         messages: {
@@ -186,6 +189,9 @@
                             },
                             gender: {
                                 required: "Select The Gender",
+                            },
+                            collage: {
+                                required: "Select Collage",
                             }
                         },
                         errorElement: 'span',

@@ -5,7 +5,7 @@
             <div class="card-header">
                 <h3 class="card-title">Student Enrollment Form</h3>
             </div>
-            <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
+                <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
             @csrf
             <!-- /.card-header -->
                 <div class="card-body">
@@ -82,7 +82,7 @@
                                 <div class="maxl">
                                     <select name="collage" class="form-control" id="gender">
                                         <option class="hidden" selected disabled>Select Collage</option>
-                                        @foreach(App\Models\Collage::all() as $collage)
+                                        @foreach($collages as $collage)
                                             <option value="{{ $collage->id }}">{{ $collage->name }}</option>
                                         @endforeach
                                     </select>

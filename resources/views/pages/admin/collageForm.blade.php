@@ -23,6 +23,15 @@
                                            placeholder="Collage Code *"/>
                                 </div>
                                 <div class="form-group">
+                                    <label>Assign Collage of University</label>
+                                    <select name="university" class="form-control">
+                                        <option class="hidden" selected disabled>Assign University</option>
+                                        @foreach(App\Models\university::all() as $university)
+                                            <option value="{{ $university->id }}">{{ $university->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Contact</label>
                                     <input type="text" class="form-control" name="contact" onkeypress="return isNumberKey(event)"
                                            placeholder="Contact Address *"/>
@@ -82,6 +91,9 @@
                 email: {
                     required: true,
                     email: true
+                },
+                university: {
+                    required: true,
                 }
             },
             messages: {
@@ -100,6 +112,9 @@
                 email: {
                     required: "Email Must be Required.",
                     email: "Please Enter email Proper Format"
+                },
+                university: {
+                    required: "please Select University",
                 }
             },
             errorElement: 'span',

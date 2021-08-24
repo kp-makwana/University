@@ -34,9 +34,10 @@ class CertificateController extends Controller
 
     public function addCertificate(Request $request)
     {
+//        dd($request->all());
         #params
         $student_id = $request->input('roll_no');
-        $Collage_id = $request->input('university');
+        $collage_id = $request->input('collage');
         $name = $request->input('name');
         $issue_date = $request->input('issue_date');
         $stream_class = $request->input('stream_class');
@@ -47,7 +48,7 @@ class CertificateController extends Controller
 
         $certificate = new Certificate;
         $certificate->student_id = $student_id;
-        $certificate->Collage_id = $Collage_id ?? 1;
+        $certificate->Collage_id = $collage_id;
         $certificate->name = $name;
         $certificate->issue_date = $issue_date;
         $certificate->stream_class = $stream_class;

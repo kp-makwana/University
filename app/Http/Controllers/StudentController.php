@@ -23,6 +23,7 @@ class StudentController extends Controller
         $user = Auth::user()->type;
         if ($user == 1) {
             $students = Student::with('user')->get();
+            $collages = Collage::all();
         } else {
             $students = Student::whereHas('collage',function ($query){
                 $query->where('university_id',Auth::user()->university->id);
@@ -30,14 +31,16 @@ class StudentController extends Controller
                 ->with('user')
                 ->orderBy('id', 'desc')
                 ->get();
+
+            $collages = Collage::where('university_id',Auth::user()->university->id)->get();
         }
-        return view('pages.university.studentForm',['students'=>$students]);
+        return view('pages.university.studentForm',['students'=>$students,'collages'=>$collages]);
     }
 
     public function add_student(CheckEmail $request): \Illuminate\Http\RedirectResponse
     {
         #param
-        $collage_id = $request->input('collage') ?? 1;
+        $collage_id = $request->input('collage') ?? 2;
         $first_name = $request->input('first_name');
         $mid_name = $request->input('mid_name');
         $last_name = $request->input('last_name');
@@ -71,7 +74,7 @@ class StudentController extends Controller
         $student->phone = $phone;
         $student->address = $address;
         $student->save();
-
+        if (Auth::user()->type == 1)return redirect()->route('studentList');
         return redirect()->route('studentList');
     }
 

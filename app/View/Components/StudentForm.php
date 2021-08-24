@@ -2,10 +2,17 @@
 
 namespace App\View\Components;
 
+use App\Models\Collage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class StudentForm extends Component
 {
+    /**
+     * @var Collage[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public $collages;
+
     /**
      * Create a new component instance.
      *
@@ -13,7 +20,12 @@ class StudentForm extends Component
      */
     public function __construct()
     {
-        //
+        $user = Auth::user()->type;
+        if ($user == 1) {
+            $this->collages = Collage::all();
+        }else{
+            $this->collages = Collage::where('university_id',Auth::user()->university->id)->get();
+        }
     }
 
     /**

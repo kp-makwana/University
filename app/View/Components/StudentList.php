@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Collage;
 use App\Models\Student;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
@@ -12,6 +13,10 @@ class StudentList extends Component
      * @var \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
     public $students;
+    /**
+     * @var Collage[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public $collages;
 
     /**
      * Create a new component instance.

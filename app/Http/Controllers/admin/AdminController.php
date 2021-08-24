@@ -10,7 +10,6 @@ use App\Models\Student;
 use App\Models\university;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
@@ -27,8 +26,7 @@ class AdminController extends Controller
 
     public function certificates()
     {
-        $certificates = Certificate::orderBy('id', 'desc')->get();
-        return view('pages.admin.certificateList', ['certificates' => $certificates]);
+        return view('pages.admin.certificateList');
     }
 
     //school
@@ -74,13 +72,13 @@ class AdminController extends Controller
     {
         #param
         $email = $request->input('email');
-
+        $university = $request->input('university');
         #user create
         $user = $this->user($email);
 
         #school add
         $model = new Collage();
-        $model->university_id = 1;
+        $model->university_id = $university;
         $this->add($request, $model, $user->id);
 
         return redirect()->route('admin.collageList');

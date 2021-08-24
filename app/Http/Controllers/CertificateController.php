@@ -21,7 +21,7 @@ class CertificateController extends Controller
         if ($user == 1) {
             $students = Student::with('user')->get();
         } else {
-            $students = Student::whereHas('university',function ($query){
+            $students = Student::whereHas('collage',function ($query){
                 $query->where('university_id',Auth::user()->university->id);
             })
                 ->with('user')
@@ -57,6 +57,6 @@ class CertificateController extends Controller
         $certificate->status = $status;
         $certificate->save();
 
-        return view('pages.university.certificateList');
+        return redirect()->route('certificates');
     }
 }

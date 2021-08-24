@@ -24,7 +24,7 @@ class StudentController extends Controller
         if ($user == 1) {
             $students = Student::with('user')->get();
         } else {
-            $students = Student::whereHas('university',function ($query){
+            $students = Student::whereHas('collage',function ($query){
                 $query->where('university_id',Auth::user()->university->id);
             })
                 ->with('user')
@@ -37,7 +37,7 @@ class StudentController extends Controller
     public function add_student(CheckEmail $request): \Illuminate\Http\RedirectResponse
     {
         #param
-        $collage_id = $request->input('university') ?? 1;
+        $collage_id = $request->input('collage') ?? 1;
         $first_name = $request->input('first_name');
         $mid_name = $request->input('mid_name');
         $last_name = $request->input('last_name');

@@ -20,10 +20,10 @@ class Certificate extends Component
      */
     public function __construct()
     {
-        $this->certificates = \App\Models\Certificate::whereHas('university',function ($query){
+        $this->certificates = \App\Models\Certificate::whereHas('collage',function ($query){
             $query->where('university_id',Auth::user()->university->id);
         })
-            ->with('university','student')
+            ->with('student')
             ->orderBy('id', 'desc')
             ->get();
     }

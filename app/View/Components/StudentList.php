@@ -24,7 +24,7 @@ class StudentList extends Component
         if ($user == 1) {
             $this->students = Student::with('user')->get();
         } else {
-            $this->students = Student::whereHas('university',function ($query){
+            $this->students = Student::whereHas('collage',function ($query){
                 $query->where('university_id',Auth::user()->university->id);
             })
                 ->with('user')

@@ -1,4 +1,4 @@
-@extends('pages.collage.navbar')
+@extends('pages.university.navbar')
 @section('content')
     <section class="content-wrapper">
         <div class="container-fluid">
@@ -14,7 +14,7 @@
                 <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">About univercity</h3>
+                            <h3 class="card-title">About University</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -23,12 +23,11 @@
                             <p class="text-muted">
                                 B.S. in Computer Science from the University of Tennessee at Knoxville
                             </p>
-
                             <hr>
 
                             <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
 
-                            <p class="text-muted">{{ $user->collage->address }}a</p>
+                            <p class="text-muted">{{ $user->university->address }}a</p>
 
                             <hr>
 

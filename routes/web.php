@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['no-auth'])->group(function () {
     #login
     Route::get('/', function () {
-        return view('pages.collage.login');
+        return view('pages.university.login');
     });
     Route::get('/login', [LoginController::class, 'index'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('DoLogin');
@@ -57,7 +57,7 @@ Route::middleware(['admin'])->group(function () {
         Route::get('/add_school', [AdminController::class, 'schoolForm'])->name('schoolForm');
         Route::post('/add_school', [AdminController::class, 'addSchool'])->name('addSchool');
 
-        #collage
+        #university
         Route::get('/collageList', [AdminController::class, 'collageList'])->name('collageList');
         Route::get('/add_collage', [AdminController::class, 'collageForm'])->name('collageForm');
         Route::post('/add_collage', [AdminController::class, 'addCollage'])->name('addCollage');

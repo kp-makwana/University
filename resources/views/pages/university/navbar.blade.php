@@ -206,7 +206,7 @@
             <img src="{{ asset('assets/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3" style="opacity: .8">
             <span
-                class="brand-text font-weight-light">{{ \Illuminate\Support\Facades\Auth::user()->collage->name ?? "" }}</span>
+                class="brand-text font-weight-light">{{ \Illuminate\Support\Facades\Auth::user()->university->name }}</span>
         </a>
         <!-- Sidebar -->
         <div class="sidebar">
@@ -234,7 +234,7 @@
                         <a href="{{ route('index') }}" class="nav-link active">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
                             <p>
-                                Dashborad
+                                Dashboard
                             </p>
                         </a>
                     </li>

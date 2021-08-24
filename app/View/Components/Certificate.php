@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Models\Collage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Certificate extends Component
@@ -18,7 +20,12 @@ class Certificate extends Component
      */
     public function __construct()
     {
-        $this->certificates = \App\Models\Certificate::all();
+        $this->certificates = \App\Models\Certificate::whereHas('university',function ($query){
+            $query->where('university_id',Auth::user()->university->id);
+        })
+            ->with('university','student')
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     /**

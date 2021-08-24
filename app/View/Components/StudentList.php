@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use App\Models\Student;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class StudentList extends Component
@@ -19,7 +20,17 @@ class StudentList extends Component
      */
     public function __construct()
     {
-        $this->students = Student::with('user')->get();
+        $user = Auth::user()->type;
+        if ($user == 1) {
+            $this->students = Student::with('user')->get();
+        } else {
+            $this->students = Student::whereHas('university',function ($query){
+                $query->where('university_id',Auth::user()->university->id);
+            })
+                ->with('user')
+                ->orderBy('id', 'desc')
+                ->get();
+        }
     }
 
     /**

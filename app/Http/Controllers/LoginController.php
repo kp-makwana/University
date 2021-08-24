@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Collage;
+use App\Models\university;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,15 +12,16 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('pages.collage.login');
+        return view('pages.university.login');
     }
 
     public function login(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $collage = Collage::with('user')->where('id', $request->input('collage'))->firstOrFail();
-        if ($collage) {
-            if ($collage->user->type == 0) {
-                if ($collage->user->email === $request->input('email')) {
+
+        $university = university::with('user')->where('id', $request->input('university'))->firstOrFail();
+        if ($university) {
+            if ($university->user->type == 0) {
+                if ($university->user->email === $request->input('email')) {
                     if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
                         return redirect()->route('index');
                     } else {

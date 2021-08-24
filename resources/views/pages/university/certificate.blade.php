@@ -1,15 +1,13 @@
-@extends('pages.collage.navbar')
+@extends('pages.university.navbar')
 @section('content')
     <div>
         <div class="container content-wrapper">
-            <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-header">
                     <h3 class="card-title">Student Enrollment Form</h3>
                 </div>
                 <form action="{{ route('addCertificate') }}" method="POST" name="add_student" id="add_student">
                 @csrf
-                <!-- /.card-header -->
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
@@ -18,7 +16,7 @@
                                     <div class="form-group">
                                         <select name="roll_no" class="form-control">
                                             <option class="hidden" selected disabled>Select Student Roll No</option>
-                                            @foreach(App\Models\Student::all() as $student)
+                                            @foreach($students as $student)
                                                 <option
                                                     value="{{ $student->id }}">{{ $student->id .'-'.$student->FullName}}</option>
                                             @endforeach
@@ -43,6 +41,15 @@
                                     <label>Date</label>
                                     <input type="date" name="issue_date" class="form-control"
                                            placeholder="Student Last Name *"/>
+                                </div>
+                                <div class="form-group">
+                                    <label>Collage Name</label>
+                                    <select name="collage" class="form-control">
+                                        <option class="hidden" selected disabled>Select Collage Name</option>
+                                        @foreach($collages as $collage)
+                                            <option value="{{ $collage->id }}">{{ $collage->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6">

@@ -25,4 +25,8 @@ class Student extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    public function collage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Collage::class, 'collage_id', 'id');
+    }
 }

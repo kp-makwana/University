@@ -8,16 +8,16 @@ class CollageController extends Controller
 {
     public function index()
     {
-        return view('pages.collage.index');
+        return view('pages.university.index');
     }
 
     public function profile()
     {
-        return view('pages.collage.profile', ['user' => Auth::user()]);
+        return view('pages.university.profile', ['user' => Auth::user()]);
     }
 
     public function helpSupport()
     {
-        return view('pages.collage.help-support');
+        return view('pages.university.help-support');
     }
 }

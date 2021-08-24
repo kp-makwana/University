@@ -15,11 +15,11 @@ class CreateCollagesTable extends Migration
     {
         Schema::create('universities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('code');
             $table->string('contact');
             $table->text('address');
-            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -25,7 +25,7 @@
 <body class="login-page" style="min-height: 496.391px;">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>University/Collage</b>Login</a>
+        <a href="#"><b>University</b>Login</a>
     </div>
     <div class="card">
         <div class="card-body login-card-body">
@@ -35,9 +35,9 @@
                 @csrf
                 <div class="form-group">
                     <!-- select -->
-                    <select class="form-control" name="collage" id="collage">
+                    <select class="form-control" name="university" id="university">
                         <option selected disabled>Select Collage</option>
-                        @foreach(App\Models\Collage::all() as $collage)
+                        @foreach(App\Models\university::all() as $collage)
                             <option value="{{$collage->id}}">{{ $collage->name }}</option>
                         @endforeach
                     </select>

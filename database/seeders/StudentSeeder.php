@@ -17,6 +17,8 @@ class StudentSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             Student::insert([
                 'user_id' => 3,
+                'collage_id'=>rand(1,5),
+                'university_id'=>rand(1,2),
                 'first_name' => 'First',
                 'mid_name' => 'mid',
                 'last_name' => 'last_name',

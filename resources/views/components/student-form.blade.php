@@ -77,6 +77,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="form-group col-sm-6">
+                                <label>Collage</label>
+                                <div class="maxl">
+                                    <select name="collage" class="form-control" id="gender">
+                                        <option class="hidden" selected disabled>Select Collage</option>
+                                        @foreach(App\Models\Collage::all() as $collage)
+                                            <option value="{{ $collage->id }}">{{ $collage->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <!-- /.col -->
                     </div>

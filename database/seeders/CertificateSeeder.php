@@ -18,6 +18,7 @@ class CertificateSeeder extends Seeder
             Certificate::insert(
                 [
                     'student_id' => 2,
+                    'collage_id'=>1,
                     'name' => 'BCA',
                     'issue_date' => now(),
                     'stream_class' => '12 class',

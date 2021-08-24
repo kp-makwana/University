@@ -1,4 +1,4 @@
-@extends('pages.collage.navbar')
+@extends('pages.university.navbar')
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->

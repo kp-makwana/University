@@ -45,4 +45,8 @@ class Certificate extends Model
     {
         return $this->belongsTo(Student::class, 'student_id', 'id');
     }
+    public function collage(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Collage::class, 'collage_id', 'id');
+    }
 }

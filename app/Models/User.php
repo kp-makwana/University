@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Database\Seeders\StudentSeeder;
+use Database\Seeders\UniversitySeeder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -44,5 +46,9 @@ class User extends Authenticatable
     public function collage(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(Collage::class, 'user_id', 'id');
+    }
+    public function university(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(university::class, 'user_id', 'id');
     }
 }

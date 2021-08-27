@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Activitylog\Models\Activity;
 
 class StudentController extends Controller
 {
@@ -74,8 +75,10 @@ class StudentController extends Controller
         $student->phone = $phone;
         $student->address = $address;
         $student->save();
-        if (Auth::user()->type == 1)return redirect()->route('studentList');
-        return redirect()->route('studentList');
+        activity('add')
+            ->performedOn($student)
+            ->log('Add new Student');
+        return redirect()->route((Auth::user()->type == 1)?'admin.studentList':'studentList');
     }
 
 }

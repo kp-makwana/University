@@ -2,23 +2,25 @@
 @section('content')
     <section class="content-wrapper">
         <div class="container-fluid">
+            @php use Illuminate\Support\Facades\Auth;$user = Auth::user() @endphp
             <div class="row col-md-12">
-                <div class="col-md-6 float-right">
+                <div class="col-md-2 float-right">
                     <img src="https://www.mkbhavuni.edu.in/mkbhavuniweb/images/mkbu-new-name.png" alt="">
-
+                </div>
+                <div class="col-md-10 float-left">
+                    <h1>{{ $user->university->name }}</h1>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                @php use Illuminate\Support\Facades\Auth;$user = Auth::user() @endphp
                 <!-- Profile Image -->
                     <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">About University</h3>
+                            <h3 class="card-title">{{ $user->university->name }}</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                            <strong><i class="fas fa-code mr-1"></i> {{ $user->university->code }}</strong>
 
                             <p class="text-muted">
                                 B.S. in Computer Science from the University of Tennessee at Knoxville
@@ -31,15 +33,9 @@
 
                             <hr>
 
-                            <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                            <strong><i class="fas fa-phone-alt mr-1"></i> {{$user->university->contact}}</strong>
 
-                            <p class="text-muted">
-                                <span class="tag tag-danger">UI Design</span>
-                                <span class="tag tag-success">Coding</span>
-                                <span class="tag tag-info">Javascript</span>
-                                <span class="tag tag-warning">PHP</span>
-                                <span class="tag tag-primary">Node.js</span>
-                            </p>
+
                             <hr>
                             <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
 

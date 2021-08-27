@@ -5,7 +5,7 @@
             <div class="card-header">
                 <h3 class="card-title">Student Enrollment Form</h3>
             </div>
-                <form action="{{ route('add_student') }}" method="POST" name="add_student" id="add_student">
+                <form action="{{ route((Auth::user()->type===0)?'add_student':'admin.add_student') }}" method="POST" name="add_student" id="add_student">
             @csrf
             <!-- /.card-header -->
                 <div class="card-body">

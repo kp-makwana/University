@@ -34,7 +34,6 @@ class CertificateController extends Controller
 
     public function addCertificate(Request $request)
     {
-//        dd($request->all());
         #params
         $student_id = $request->input('roll_no');
         $collage_id = $request->input('collage');
@@ -57,7 +56,9 @@ class CertificateController extends Controller
         $certificate->obtain_class = $obtain_class;
         $certificate->status = $status;
         $certificate->save();
-
+        activity('add')
+            ->performedOn($certificate)
+            ->log('Add new Certificate');
         return redirect()->route('certificates');
     }
 }

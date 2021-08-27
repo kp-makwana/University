@@ -74,6 +74,7 @@ Route::middleware(['admin'])->group(function () {
 
         #certificate
         Route::get('/certificate', [AdminController::class, 'certificates'])->name('certificates');
+        Route::get('/activity', [AdminController::class, 'activity'])->name('activity');
         Route::get('/help-support', [AdminController::class, 'helpSupport'])->name('helpSupport');
 
         Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

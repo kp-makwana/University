@@ -10,7 +10,9 @@ use App\Models\Student;
 use App\Models\university;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Activitylog\Models\Activity;
 
 class AdminController extends Controller
 {
@@ -51,7 +53,7 @@ class AdminController extends Controller
 
         #school add
         $model = new School();
-        $this->add($request, $model, $user->id);
+        $this->add($request, $model, $user->id,'school');
 
         return redirect()->route('admin.schoolList');
     }
@@ -79,7 +81,7 @@ class AdminController extends Controller
         #school add
         $model = new Collage();
         $model->university_id = $university;
-        $this->add($request, $model, $user->id);
+        $this->add($request, $model, $user->id,'collage');
 
         return redirect()->route('admin.collageList');
     }
@@ -106,7 +108,7 @@ class AdminController extends Controller
 
         #school add
         $model = new university();
-        $this->add($request, $model, $user->id);
+        $this->add($request, $model, $user->id,'university');
 
         return redirect()->route('admin.universitiesList');
     }
@@ -134,7 +136,7 @@ class AdminController extends Controller
         return $user;
     }
 
-    protected function add($request, $model, $user_id)
+    protected function add($request, $model, $user_id,$log_name)
     {
         $name = $request->input('name');
         $code = $request->input('code');
@@ -148,6 +150,15 @@ class AdminController extends Controller
         $model->contact = $contact;
         $model->address = $address;
         $model->save();
+        activity('add')
+            ->performedOn($model)
+            ->log('add '.$log_name);
+    }
+
+    public function activity()
+    {
+        $activities = Activity::all();
+        return view('pages.admin.activity',['activities'=>$activities]);
     }
 
 }

@@ -23,6 +23,9 @@ class LoginController extends Controller
             if ($university->user->type == 0) {
                 if ($university->user->email === $request->input('email')) {
                     if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                        activity('login')
+                            ->performedOn(Auth::user())
+                            ->log('Login university');
                         return redirect()->route('index');
                     } else {
                         return back()->with(['type' => 'error', 'message' => 'Invalid Password']);
@@ -41,6 +44,9 @@ class LoginController extends Controller
         if ($check) {
             if ($check->type == 1) {
                 if (Auth::attempt($request->only('email', 'password'), $request->filled('remember'))) {
+                    activity('login')
+                        ->performedOn(Auth::user())
+                        ->log('Login Admin');
                     return redirect()->route('admin.index');
                 }
             }
@@ -50,6 +56,16 @@ class LoginController extends Controller
 
     public function logout(): \Illuminate\Http\RedirectResponse
     {
+        if (Auth::user()->type === 1)
+        {
+            activity('logout')
+                ->performedOn(Auth::user())
+                ->log('Admin university');
+        }else{
+            activity('logout')
+                ->performedOn(Auth::user())
+                ->log('Logout university');
+        }
         Auth::logout();
         return redirect()->route('login');
     }
